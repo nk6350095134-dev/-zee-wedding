@@ -11,7 +11,7 @@ import {
   faCalendarDays,
   faRing,
   faBriefcase,
-  faVideo,
+  
   faUserGroup,
   faCakeCandles,
   faBaby,
@@ -20,7 +20,6 @@ import {
   faLandmark,
   faCheck,
   faArrowRight,
-  faPlay,
   faCameraRetro,
 } from "@fortawesome/free-solid-svg-icons";
 
