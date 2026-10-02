@@ -339,53 +339,48 @@ p {
 
 /* =========================================================
    MOUSE + TOUCH SWIPE
+   Wedding + Pre-Wedding Packages
    ========================================================= */
 
 .swipe-container {
   display: flex;
+  width: 100%;
 
   overflow-x: auto;
+  overflow-y: hidden;
 
   gap: 25px;
 
   cursor: grab;
 
-  scroll-behavior: smooth;
-
   scrollbar-width: none;
-
   -webkit-overflow-scrolling: touch;
 
   user-select: none;
 
-  touch-action: pan-x;
+  /*
+    IMPORTANT:
+    Vertical scrolling of the whole page is allowed.
+  */
+  touch-action: pan-y;
 }
 
 .swipe-container::-webkit-scrollbar {
   display: none;
 }
 
-
-/* MOUSE IS DRAGGING */
-
 .swipe-container.dragging {
   cursor: grabbing;
-
-  scroll-behavior: auto;
 }
-
-
-/* PREVENT IMAGE DRAG */
 
 .swipe-container img {
   pointer-events: none;
-
   user-select: none;
 }
 
 
 /* =========================================================
-   CARD WIDTH
+   DESKTOP
    ========================================================= */
 
 .swipe-container > * {
@@ -398,7 +393,6 @@ p {
    ========================================================= */
 
 @media (max-width: 1024px) {
-
   .swipe-container {
     gap: 20px;
   }
@@ -406,7 +400,6 @@ p {
   .swipe-container > * {
     flex: 0 0 300px;
   }
-
 }
 
 
@@ -415,93 +408,28 @@ p {
    ========================================================= */
 
 @media (max-width: 768px) {
-
   .swipe-container {
     gap: 16px;
-
     scroll-snap-type: x mandatory;
+
+    /*
+      Allow vertical page scrolling.
+    */
+    touch-action: pan-y;
+
+    overscroll-behavior-x: contain;
   }
 
   .swipe-container > * {
     flex: 0 0 85%;
-
     scroll-snap-align: start;
   }
-
 }
-
 
 
 /* =========================================================
-   SWIPE CONTAINER
-   Wedding + Pre-Wedding Packages
+   SMALL MOBILE
    ========================================================= */
-
-.swipe-container {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 25px;
-
-  cursor: grab;
-  scroll-behavior: smooth;
-
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-
-  user-select: none;
-}
-
-.swipe-container::-webkit-scrollbar {
-  display: none;
-}
-
-.swipe-container.dragging {
-  cursor: grabbing;
-  scroll-behavior: auto;
-}
-
-.swipe-container img {
-  pointer-events: none;
-  user-select: none;
-}
-
-.swipe-container > * {
-  flex: 0 0 320px;
-}
-
-
-/* TABLET */
-
-@media (max-width: 1024px) {
-  .swipe-container {
-    gap: 20px;
-  }
-
-  .swipe-container > * {
-    flex: 0 0 300px;
-  }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 768px) {
-  .swipe-container {
-    gap: 16px;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-    overscroll-behavior-y: auto;
-  }
-
-  .swipe-container > * {
-    flex: 0 0 85%;
-    scroll-snap-align: start;
-  }
-}
-
-
-/* SMALL MOBILE */
 
 @media (max-width: 480px) {
   .swipe-container {
