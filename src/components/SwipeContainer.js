@@ -10,12 +10,11 @@ function SwipeContainer({ children, className = "" }) {
   const startY = useRef(0);
   const startScrollLeft = useRef(0);
 
-  const isHorizontalSwipe = useRef(false);
-  const directionDecided = useRef(false);
+  const direction = useRef(null);
 
-  /* =========================
-     MOUSE DRAG
-     ========================= */
+  // =========================
+  // MOUSE
+  // =========================
 
   const handleMouseDown = (e) => {
     const slider = sliderRef.current;
@@ -51,9 +50,9 @@ function SwipeContainer({ children, className = "" }) {
     setIsDragging(false);
   };
 
-  /* =========================
-     TOUCH START
-     ========================= */
+  // =========================
+  // TOUCH START
+  // =========================
 
   const handleTouchStart = (e) => {
     const touch = e.touches[0];
@@ -64,13 +63,12 @@ function SwipeContainer({ children, className = "" }) {
     startScrollLeft.current =
       sliderRef.current?.scrollLeft || 0;
 
-    isHorizontalSwipe.current = false;
-    directionDecided.current = false;
+    direction.current = null;
   };
 
-  /* =========================
-     TOUCH MOVE
-     ========================= */
+  // =========================
+  // TOUCH MOVE
+  // =========================
 
   const handleTouchMove = (e) => {
     const slider = sliderRef.current;
@@ -79,51 +77,43 @@ function SwipeContainer({ children, className = "" }) {
 
     const touch = e.touches[0];
 
-    const moveX = touch.clientX - startX.current;
-    const moveY = touch.clientY - startY.current;
+    const distanceX =
+      touch.clientX - startX.current;
 
-    /*
-      Direction decide only after
-      finger moves enough distance.
-    */
+    const distanceY =
+      touch.clientY - startY.current;
 
-    if (!directionDecided.current) {
+    // Direction decide karo
+    if (direction.current === null) {
       if (
-        Math.abs(moveX) < 8 &&
-        Math.abs(moveY) < 8
+        Math.abs(distanceX) < 8 &&
+        Math.abs(distanceY) < 8
       ) {
         return;
       }
 
-      directionDecided.current = true;
-
-      /*
-        Horizontal movement:
-        package cards swipe.
-      */
-
-      if (Math.abs(moveX) > Math.abs(moveY)) {
-        isHorizontalSwipe.current = true;
+      if (Math.abs(distanceX) > Math.abs(distanceY)) {
+        direction.current = "horizontal";
       } else {
-        /*
-          Vertical movement:
-          let browser scroll the page normally.
-        */
-        isHorizontalSwipe.current = false;
+        direction.current = "vertical";
       }
     }
 
-    /*
-      Only stop browser movement when
-      the user is actually swiping horizontally.
-    */
-
-    if (isHorizontalSwipe.current) {
+    // Horizontal swipe
+    if (direction.current === "horizontal") {
       e.preventDefault();
 
       slider.scrollLeft =
-        startScrollLeft.current - moveX;
+        startScrollLeft.current - distanceX;
     }
+
+    // Vertical movement:
+    // kuch nahi karna.
+    // Browser automatically page scroll karega.
+  };
+
+  const handleTouchEnd = () => {
+    direction.current = null;
   };
 
   return (
@@ -138,6 +128,7 @@ function SwipeContainer({ children, className = "" }) {
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {children}
     </div>
@@ -145,3 +136,4 @@ function SwipeContainer({ children, className = "" }) {
 }
 
 export default SwipeContainer;
+

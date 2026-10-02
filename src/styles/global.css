@@ -1,3 +1,8 @@
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +18,13 @@ body {
   background: #111111;
   color: #ffffff;
   font-family: Arial, sans-serif;
+
+  /*
+    Important:
+    Horizontal overflow hidden hai,
+    vertical page scrolling normal rahegi.
+  */
+  overflow-x: hidden;
 }
 
 a {
@@ -29,9 +41,19 @@ img {
   display: block;
 }
 
+
+/* =========================================================
+   COMMON SECTION
+   ========================================================= */
+
 .section {
   padding: 90px 8%;
 }
+
+
+/* =========================================================
+   SECTION SUBTITLE
+   ========================================================= */
 
 .section-subtitle {
   color: #c9a46c;
@@ -40,6 +62,11 @@ img {
   margin-bottom: 15px;
   font-weight: 600;
 }
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
 
 h1,
 h2,
@@ -53,24 +80,38 @@ h2 {
   margin-bottom: 25px;
 }
 
+
+/* =========================================================
+   PARAGRAPHS
+   ========================================================= */
+
 p {
   color: #d0d0d0;
   line-height: 1.7;
 }
 
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
 .main-button,
 .outline-button {
   display: inline-block;
+
   padding: 14px 28px;
   margin-top: 25px;
+
   border: 1px solid #c9a46c;
+
   transition: 0.3s ease;
+
   cursor: pointer;
 }
 
 .main-button {
   background: #c9a46c;
-  color: #111;
+  color: #111111;
 }
 
 .main-button:hover {
@@ -80,54 +121,12 @@ p {
 
 .outline-button {
   color: #c9a46c;
+  background: transparent;
 }
 
 .outline-button:hover {
   background: #c9a46c;
-  color: #111;
-}
-
-.page-header {
-  text-align: center;
-  padding: 130px 8% 75px;
-  background: #181818;
-}
-
-.page-header h1 {
-  font-size: 55px;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 900px) {
-  .section {
-    padding: 70px 6%;
-  }
-
-  h2 {
-    font-size: 38px;
-  }
-
-  .page-header h1 {
-    font-size: 45px;
-  }
-}
-
-@media (max-width: 600px) {
-  .section {
-    padding: 60px 5%;
-  }
-
-  h2 {
-    font-size: 32px;
-  }
-
-  .page-header {
-    padding: 100px 5% 60px;
-  }
-
-  .page-header h1 {
-    font-size: 38px;
-  }
+  color: #111111;
 }
 
 
@@ -149,10 +148,11 @@ p {
   width: 100%;
   min-height: 400px;
 
-  padding: 12px 7% 9px;
+  padding: 120px 7% 90px;
 
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   align-items: flex-start;
 
@@ -166,7 +166,9 @@ p {
 }
 
 
-/* DARK OVERLAY */
+/* =========================================================
+   PAGE HEADER DARK OVERLAY
+   ========================================================= */
 
 .page-header::before {
   content: "";
@@ -186,7 +188,9 @@ p {
 }
 
 
-/* HEADER CONTENT */
+/* =========================================================
+   PAGE HEADER CONTENT
+   ========================================================= */
 
 .page-header > * {
   position: relative;
@@ -194,7 +198,9 @@ p {
 }
 
 
-/* SMALL TITLE */
+/* =========================================================
+   PAGE HEADER SUBTITLE
+   ========================================================= */
 
 .page-header .section-subtitle {
   margin: 0 0 14px;
@@ -209,7 +215,9 @@ p {
 }
 
 
-/* MAIN TITLE */
+/* =========================================================
+   PAGE HEADER TITLE
+   ========================================================= */
 
 .page-header h1 {
   margin: 0 0 18px;
@@ -224,7 +232,9 @@ p {
 }
 
 
-/* DESCRIPTION */
+/* =========================================================
+   PAGE HEADER DESCRIPTION
+   ========================================================= */
 
 .page-header p:not(.section-subtitle) {
   max-width: 650px;
@@ -239,10 +249,101 @@ p {
 
 
 /* =========================================================
+   MOUSE + TOUCH SWIPE
+   Wedding Packages
+   Pre-Wedding Packages
+   ========================================================= */
+
+.swipe-container {
+  display: flex;
+
+  width: 100%;
+
+  /*
+    Horizontal scrolling for cards.
+  */
+  overflow-x: auto;
+
+  /*
+    Keep vertical overflow hidden inside
+    the card container.
+  */
+  overflow-y: hidden;
+
+  gap: 25px;
+
+  cursor: grab;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  user-select: none;
+
+  /*
+    VERY IMPORTANT:
+    Allows the whole website to scroll vertically.
+    
+    JavaScript detects horizontal movement
+    and handles package swipe.
+  */
+  touch-action: pan-y;
+
+  /*
+    Prevent horizontal swipe from creating
+    unwanted page movement.
+  */
+  overscroll-behavior-x: contain;
+}
+
+
+/* Hide Chrome / Edge scrollbar */
+
+.swipe-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   MOUSE DRAGGING
+   ========================================================= */
+
+.swipe-container.dragging {
+  cursor: grabbing;
+}
+
+
+/* =========================================================
+   PREVENT IMAGE DRAG
+   ========================================================= */
+
+.swipe-container img {
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* =========================================================
+   DESKTOP CARD WIDTH
+   ========================================================= */
+
+.swipe-container > * {
+  flex: 0 0 320px;
+}
+
+
+/* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 1024px) {
+
+  .section {
+    padding: 75px 6%;
+  }
+
+
+  /* Page Header */
 
   .page-header {
     min-height: 390px;
@@ -256,6 +357,16 @@ p {
     font-size: 48px;
   }
 
+
+  /* Swipe */
+
+  .swipe-container {
+    gap: 20px;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 300px;
+  }
 }
 
 
@@ -264,6 +375,20 @@ p {
    ========================================================= */
 
 @media (max-width: 768px) {
+
+  .section {
+    padding: 65px 20px;
+  }
+
+
+  /* Heading */
+
+  h2 {
+    font-size: 32px;
+  }
+
+
+  /* Page Header */
 
   .page-header {
     min-height: 350px;
@@ -301,6 +426,27 @@ p {
     line-height: 1.75;
   }
 
+
+  /* Swipe */
+
+  .swipe-container {
+    gap: 16px;
+
+    /*
+      Vertical page scrolling remains enabled.
+    */
+    touch-action: pan-y;
+
+    scroll-snap-type: x mandatory;
+
+    overscroll-behavior-x: contain;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 85%;
+
+    scroll-snap-align: start;
+  }
 }
 
 
@@ -309,6 +455,13 @@ p {
    ========================================================= */
 
 @media (max-width: 480px) {
+
+  .section {
+    padding: 55px 15px;
+  }
+
+
+  /* Page Header */
 
   .page-header {
     min-height: 310px;
@@ -334,104 +487,9 @@ p {
     line-height: 1.7;
   }
 
-}
 
+  /* Swipe */
 
-/* =========================================================
-   MOUSE + TOUCH SWIPE
-   Wedding + Pre-Wedding Packages
-   ========================================================= */
-
-.swipe-container {
-  display: flex;
-  width: 100%;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  gap: 25px;
-
-  cursor: grab;
-
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-
-  user-select: none;
-
-  /*
-    IMPORTANT:
-    Vertical scrolling of the whole page is allowed.
-  */
-  touch-action: pan-y;
-}
-
-.swipe-container::-webkit-scrollbar {
-  display: none;
-}
-
-.swipe-container.dragging {
-  cursor: grabbing;
-}
-
-.swipe-container img {
-  pointer-events: none;
-  user-select: none;
-}
-
-
-/* =========================================================
-   DESKTOP
-   ========================================================= */
-
-.swipe-container > * {
-  flex: 0 0 320px;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1024px) {
-  .swipe-container {
-    gap: 20px;
-  }
-
-  .swipe-container > * {
-    flex: 0 0 300px;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-  .swipe-container {
-    gap: 16px;
-    scroll-snap-type: x mandatory;
-
-    /*
-      Allow vertical page scrolling.
-    */
-    touch-action: pan-y;
-
-    overscroll-behavior-x: contain;
-  }
-
-  .swipe-container > * {
-    flex: 0 0 85%;
-    scroll-snap-align: start;
-  }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
   .swipe-container {
     gap: 14px;
   }
