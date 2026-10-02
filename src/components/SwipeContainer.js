@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react";
 
 function SwipeContainer({ children, className = "" }) {
@@ -12,79 +11,53 @@ function SwipeContainer({ children, className = "" }) {
 
   const direction = useRef(null);
 
-  // =========================
-  // MOUSE
-  // =========================
+  // =====================================================
+  // TOUCH / MOUSE START
+  // =====================================================
 
-  const handleMouseDown = (e) => {
+  const handlePointerDown = (e) => {
     const slider = sliderRef.current;
 
     if (!slider) return;
 
-    setIsDragging(true);
+    startX.current = e.clientX;
+    startY.current = e.clientY;
 
-    startX.current = e.pageX;
     startScrollLeft.current = slider.scrollLeft;
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-
-    const slider = sliderRef.current;
-
-    if (!slider) return;
-
-    e.preventDefault();
-
-    const distance = e.pageX - startX.current;
-
-    slider.scrollLeft =
-      startScrollLeft.current - distance * 1.3;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
-
-  // =========================
-  // TOUCH START
-  // =========================
-
-  const handleTouchStart = (e) => {
-    const touch = e.touches[0];
-
-    startX.current = touch.clientX;
-    startY.current = touch.clientY;
-
-    startScrollLeft.current =
-      sliderRef.current?.scrollLeft || 0;
 
     direction.current = null;
+
+    // Only mouse needs grabbing
+    if (e.pointerType === "mouse") {
+      setIsDragging(true);
+
+      slider.setPointerCapture(e.pointerId);
+    }
   };
 
-  // =========================
-  // TOUCH MOVE
-  // =========================
 
-  const handleTouchMove = (e) => {
+  // =====================================================
+  // MOVE
+  // =====================================================
+
+  const handlePointerMove = (e) => {
     const slider = sliderRef.current;
 
     if (!slider) return;
 
-    const touch = e.touches[0];
-
     const distanceX =
-      touch.clientX - startX.current;
+      e.clientX - startX.current;
 
     const distanceY =
-      touch.clientY - startY.current;
+      e.clientY - startY.current;
 
-    // Direction decide karo
+
+    // -----------------------------------------------------
+    // Detect direction
+    // -----------------------------------------------------
+
     if (direction.current === null) {
+
       if (
         Math.abs(distanceX) < 8 &&
         Math.abs(distanceY) < 8
@@ -92,43 +65,115 @@ function SwipeContainer({ children, className = "" }) {
         return;
       }
 
-      if (Math.abs(distanceX) > Math.abs(distanceY)) {
+
+      if (
+        Math.abs(distanceX) >
+        Math.abs(distanceY)
+      ) {
         direction.current = "horizontal";
       } else {
         direction.current = "vertical";
       }
     }
 
-    // Horizontal swipe
-    if (direction.current === "horizontal") {
-      e.preventDefault();
+
+    // -----------------------------------------------------
+    // Horizontal = package swipe
+    // -----------------------------------------------------
+
+    if (
+      direction.current === "horizontal"
+    ) {
+
+      /*
+        Manual horizontal movement.
+        1.05 gives a controlled smooth feeling.
+      */
 
       slider.scrollLeft =
-        startScrollLeft.current - distanceX;
+        startScrollLeft.current -
+        distanceX * 1.05;
+
+
+      /*
+        Stop browser from changing
+        the page vertically during
+        horizontal swipe.
+      */
+
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+
+
+      if (e.pointerType === "mouse") {
+        setIsDragging(true);
+      }
+    }
+  };
+
+
+  // =====================================================
+  // END
+  // =====================================================
+
+  const handlePointerUp = (e) => {
+
+    const slider = sliderRef.current;
+
+    if (
+      slider &&
+      e.pointerType === "mouse" &&
+      slider.hasPointerCapture(
+        e.pointerId
+      )
+    ) {
+      slider.releasePointerCapture(
+        e.pointerId
+      );
     }
 
-    // Vertical movement:
-    // kuch nahi karna.
-    // Browser automatically page scroll karega.
-  };
+    setIsDragging(false);
 
-  const handleTouchEnd = () => {
     direction.current = null;
   };
+
+
+  // =====================================================
+  // CANCEL
+  // =====================================================
+
+  const handlePointerCancel = () => {
+
+    setIsDragging(false);
+
+    direction.current = null;
+  };
+
 
   return (
     <div
       ref={sliderRef}
+
       className={`swipe-container ${
         isDragging ? "dragging" : ""
       } ${className}`}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+
+      onPointerDown={
+        handlePointerDown
+      }
+
+      onPointerMove={
+        handlePointerMove
+      }
+
+      onPointerUp={
+        handlePointerUp
+      }
+
+      onPointerCancel={
+        handlePointerCancel
+      }
     >
       {children}
     </div>
@@ -136,4 +181,3 @@ function SwipeContainer({ children, className = "" }) {
 }
 
 export default SwipeContainer;
-

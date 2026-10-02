@@ -19,11 +19,8 @@ body {
   color: #ffffff;
   font-family: Arial, sans-serif;
 
-  /*
-    Important:
-    Horizontal overflow hidden hai,
-    vertical page scrolling normal rahegi.
-  */
+  /* Horizontal page overflow band.
+     Vertical page scrolling normal rahegi. */
   overflow-x: hidden;
 }
 
@@ -132,14 +129,6 @@ p {
 
 /* =========================================================
    COMMON PAGE HEADER
-   Used on:
-   About
-   Services
-   Packages
-   Pre-Wedding
-   Portfolio
-   Customers
-   Contact
    ========================================================= */
 
 .page-header {
@@ -155,8 +144,6 @@ p {
 
   justify-content: center;
   align-items: flex-start;
-
-  box-sizing: border-box;
 
   background-size: cover;
   background-position: center;
@@ -249,7 +236,7 @@ p {
 
 
 /* =========================================================
-   MOUSE + TOUCH SWIPE
+   SWIPE CONTAINER
    Wedding Packages
    Pre-Wedding Packages
    ========================================================= */
@@ -257,17 +244,18 @@ p {
 .swipe-container {
   display: flex;
 
+   flex: 0 0 320px;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+
   width: 100%;
 
-  /*
-    Horizontal scrolling for cards.
-  */
+  /* Horizontal cards scroll */
   overflow-x: auto;
 
-  /*
-    Keep vertical overflow hidden inside
-    the card container.
-  */
+  /* Container ke andar vertical scroll nahi */
   overflow-y: hidden;
 
   gap: 25px;
@@ -276,28 +264,42 @@ p {
 
   scrollbar-width: none;
 
+  /* iPhone / Android smooth scrolling */
   -webkit-overflow-scrolling: touch;
 
   user-select: none;
 
   /*
-    VERY IMPORTANT:
-    Allows the whole website to scroll vertically.
-    
-    JavaScript detects horizontal movement
-    and handles package swipe.
+    IMPORTANT:
+
+    Vertical finger movement = website/page scroll
+    Horizontal finger movement = package swipe
+
+    SwipeContainer.js direction detect karega.
   */
   touch-action: pan-y;
 
   /*
-    Prevent horizontal swipe from creating
-    unwanted page movement.
+    Horizontal overscroll ko page tak propagate
+    nahi hone deta.
   */
   overscroll-behavior-x: contain;
+
+  /*
+    Programmatic scrolling / soft settling smooth.
+  */
+  scroll-behavior: smooth;
+
+  /*
+    Browser ko scrolling container ke baare mein hint.
+  */
+  will-change: scroll-position;
 }
 
 
-/* Hide Chrome / Edge scrollbar */
+/* =========================================================
+   HIDE SCROLLBAR
+   ========================================================= */
 
 .swipe-container::-webkit-scrollbar {
   display: none;
@@ -320,6 +322,7 @@ p {
 .swipe-container img {
   pointer-events: none;
   user-select: none;
+  -webkit-user-drag: none;
 }
 
 
@@ -342,9 +345,6 @@ p {
     padding: 75px 6%;
   }
 
-
-  /* Page Header */
-
   .page-header {
     min-height: 390px;
 
@@ -358,10 +358,17 @@ p {
   }
 
 
-  /* Swipe */
+  /* Tablet swipe */
 
   .swipe-container {
     gap: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    touch-action: pan-y;
+
+    scroll-behavior: smooth;
   }
 
   .swipe-container > * {
@@ -427,25 +434,85 @@ p {
   }
 
 
-  /* Swipe */
+  /* =========================================================
+     MOBILE SWIPE
+     ========================================================= */
 
   .swipe-container {
+
+    display: flex;
+
+    width: 100%;
+
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
     gap: 16px;
 
+    padding: 5px 0 15px;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
     /*
-      Vertical page scrolling remains enabled.
+      UP / DOWN
+      = Page scroll
+
+      LEFT / RIGHT
+      = Package swipe
     */
     touch-action: pan-y;
 
-    scroll-snap-type: x mandatory;
+    /*
+      SOFT SNAP
+
+      Card nearest position par gently settle karega.
+      Swipe ko force nahi karega.
+    */
+    scroll-snap-type: x proximity;
+
+    scroll-behavior: smooth;
 
     overscroll-behavior-x: contain;
+
+    will-change: scroll-position;
   }
 
+
+  /* Hide mobile scrollbar */
+
+  .swipe-container::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* =========================================================
+     MOBILE CARD
+     ========================================================= */
+
   .swipe-container > * {
+
+    /*
+      Screen ka approx 85% card.
+      Next card thoda visible rahega.
+    */
     flex: 0 0 85%;
 
+    min-width: 85%;
+
+    /*
+      Soft snap position.
+    */
     scroll-snap-align: start;
+
+    /*
+      Ek swipe mein multiple cards jump
+      karne ki possibility ko normal rakhta hai.
+    */
+    scroll-snap-stop: normal;
   }
 }
 
@@ -460,9 +527,6 @@ p {
     padding: 55px 15px;
   }
 
-
-  /* Page Header */
-
   .page-header {
     min-height: 310px;
 
@@ -473,6 +537,7 @@ p {
     margin-bottom: 10px;
 
     font-size: 9px;
+
     letter-spacing: 2px;
   }
 
@@ -488,14 +553,241 @@ p {
   }
 
 
-  /* Swipe */
+  /* Small mobile swipe */
 
   .swipe-container {
+
     gap: 14px;
+
+    padding: 5px 0 15px;
+
+    /*
+      Same soft snap.
+    */
+    scroll-snap-type: x proximity;
+
+    scroll-behavior: smooth;
   }
 
+
   .swipe-container > * {
+
+    /*
+      Thoda bada card on small screens.
+    */
     flex: 0 0 88%;
+
+    min-width: 88%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .swipe-container {
+    scroll-behavior: auto;
+  }
+}
+
+
+
+
+
+
+/* =========================================================
+   GLOBAL SCROLL ANIMATIONS
+   ========================================================= */
+
+.scroll-animation {
+  opacity: 0;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+
+  will-change: opacity, transform;
+}
+
+
+/* =========================================================
+   FADE UP
+   ========================================================= */
+
+.scroll-animation.fade-up {
+  transform: translateY(50px);
+}
+
+.scroll-animation.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   FADE DOWN
+   ========================================================= */
+
+.scroll-animation.fade-down {
+  transform: translateY(-50px);
+}
+
+.scroll-animation.fade-down.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   FADE LEFT
+   ========================================================= */
+
+.scroll-animation.fade-left {
+  transform: translateX(-60px);
+}
+
+.scroll-animation.fade-left.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   FADE RIGHT
+   ========================================================= */
+
+.scroll-animation.fade-right {
+  transform: translateX(60px);
+}
+
+.scroll-animation.fade-right.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   ZOOM
+   ========================================================= */
+
+.scroll-animation.zoom {
+  transform: scale(0.90);
+}
+
+.scroll-animation.zoom.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* =========================================================
+   SIMPLE FADE
+   ========================================================= */
+
+.scroll-animation.fade {
+  transform: none;
+}
+
+.scroll-animation.fade.show {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   PACKAGE CARD HOVER
+   ========================================================= */
+
+.swipe-container > * {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.swipe-container > *:hover {
+  transform: translateY(-8px);
+}
+
+
+/* =========================================================
+   PACKAGE IMAGE ANIMATION
+   ========================================================= */
+
+.swipe-container img {
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+.swipe-container > *:hover img {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   BUTTON ANIMATION
+   ========================================================= */
+
+.main-button,
+.outline-button {
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.main-button:hover,
+.outline-button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   SWIPE SMOOTHNESS
+   ========================================================= */
+
+.swipe-container {
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================================================
+   MOBILE CARD ANIMATION
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .swipe-container > * {
+    transition:
+      transform 0.35s ease,
+      opacity 0.35s ease;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .scroll-animation {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .swipe-container {
+    scroll-behavior: auto;
   }
 }
 

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import SwipeContainer from "../components/SwipeContainer";
@@ -9,6 +10,8 @@ import testimonials from "../data/testimonials";
 import ServiceCard from "../components/ServiceCard";
 import PackageCard from "../components/PackageCard";
 import TestimonialCard from "../components/TestimonialCard";
+
+import ScrollAnimation from "../components/ScrollAnimation";
 
 import "../styles/home.css";
 
@@ -38,7 +41,9 @@ function Home() {
   return (
     <>
 
-      {/* HERO */}
+      {/* =====================================================
+          HERO
+          ===================================================== */}
 
       <section
         id="home"
@@ -52,49 +57,62 @@ function Home() {
         }}
       >
 
-        <div className="hero-content">
+        <ScrollAnimation animation="fade-up">
 
-          <p className="small-title">
-            WEDDING FILMS • REELS • CREATIVE SERVICES
-          </p>
+          <div className="hero-content">
 
-          <h1>
-            We Turn Your
-            <br />
-            <span>Moments Into Memories</span>
-          </h1>
+            <p className="small-title">
+              WEDDING FILMS • REELS • CREATIVE SERVICES
+            </p>
 
-          <p className="hero-text">
-            Professional wedding films, cinematic reels and creative
-            video editing that make your special moments unforgettable.
-          </p>
+            <h1>
+              We Turn Your
+              <br />
+              <span>Moments Into Memories</span>
+            </h1>
 
-          <Link
-            to="/packages"
-            className="main-button"
-          >
-            View Packages
-          </Link>
+            <p className="hero-text">
+              Professional wedding films, cinematic reels and creative
+              video editing that make your special moments unforgettable.
+            </p>
 
-        </div>
+            <Link
+              to="/packages"
+              className="main-button"
+            >
+              View Packages
+            </Link>
+
+          </div>
+
+        </ScrollAnimation>
 
       </section>
 
 
-      {/* ABOUT PREVIEW */}
+      {/* =====================================================
+          ABOUT PREVIEW
+          ===================================================== */}
 
       <section className="about section">
 
-        <div className="about-image">
+        <ScrollAnimation
+          animation="fade-left"
+          className="about-image"
+        >
 
           <img
             src="/images/myimage.jpg"
             alt="Zee Weddings"
           />
 
-        </div>
+        </ScrollAnimation>
 
-        <div className="about-content">
+
+        <ScrollAnimation
+          animation="fade-right"
+          className="about-content"
+        >
 
           <p className="section-subtitle">
             ABOUT ZEE WEDDINGS
@@ -123,49 +141,94 @@ function Home() {
             More About Us
           </Link>
 
-        </div>
+        </ScrollAnimation>
 
       </section>
 
 
-      {/* SERVICES */}
+      {/* =====================================================
+          SERVICES
+          ===================================================== */}
+
+      <section className="services section">
+
+        <ScrollAnimation animation="fade-up">
+
+          <p className="section-subtitle">
+            WHAT WE DO
+          </p>
+
+          <h2>
+            Booking & Services Details
+          </h2>
+
+        </ScrollAnimation>
 
 
-<section className="services section">
-  <p className="section-subtitle">WHAT WE DO</p>
+        <div className="service-grid">
 
-  <h2>Booking & Services Details</h2>
+          {services.map((service, index) => (
 
-  <div className="service-grid">
-    {services.map((service, index) => (
-      <ServiceCard
-        key={index}
-        service={service}
-      />
-    ))}
-  </div>
+            <ScrollAnimation
+              key={index}
+              animation="fade-up"
+            >
 
-  {/* More Info Button */}
-  <div className="services-more-button">
-    <Link to="/services" className="outline-button">
-      More Info
-    </Link>
-  </div>
-</section>
+              <ServiceCard
+                service={service}
+              />
+
+            </ScrollAnimation>
+
+          ))}
+
+        </div>
 
 
+        <ScrollAnimation animation="fade-up">
 
-      
-      {/* PRE-WEDDING PACKAGES */}
+          <div className="services-more-button">
+
+            <Link
+              to="/services"
+              className="outline-button"
+            >
+              More Info
+            </Link>
+
+          </div>
+
+        </ScrollAnimation>
+
+      </section>
+
+
+      {/* =====================================================
+          PRE-WEDDING
+          ===================================================== */}
 
       <section className="home-prewedding section">
 
-        <div className="home-pre-wedding-image"> <img src="/images/p5.webp" alt="Pre-Wedding" /> </div>
+        <ScrollAnimation
+          animation="fade-left"
+          className="home-pre-wedding-image"
+        >
 
-        <div className="home-prewedding-content">
+          <img
+            src="/images/p5.webp"
+            alt="Pre-Wedding"
+          />
+
+        </ScrollAnimation>
+
+
+        <ScrollAnimation
+          animation="fade-right"
+          className="home-prewedding-content"
+        >
 
           <p className="section-subtitle">
-           <h1> PRE-WEDDING</h1>
+            <h1>PRE-WEDDING</h1>
           </p>
 
           <h2>
@@ -187,213 +250,320 @@ function Home() {
             View Pre-Wedding Packages
           </Link>
 
-        </div>
+        </ScrollAnimation>
 
 
         <div className="home-prewedding-cards">
 
-          <div className="home-prewedding-card">
+          <ScrollAnimation animation="fade-up">
 
-            <span className="prewedding-number">
-              01
-            </span>
+            <div className="home-prewedding-card">
 
-            <h3>
-              Cinematic Reels
-            </h3>
+              <span className="prewedding-number">
+                01
+              </span>
 
-            <p>
-              Creative and trending reels specially created
-              for your beautiful love story.
-            </p>
+              <h3>
+                Cinematic Reels
+              </h3>
 
-          </div>
+              <p>
+                Creative and trending reels specially created
+                for your beautiful love story.
+              </p>
 
+            </div>
 
-          <div className="home-prewedding-card">
-
-            <span className="prewedding-number">
-              02
-            </span>
-
-            <h3>
-              Couple Content
-            </h3>
-
-            <p>
-              Beautiful candid moments and creative couple
-              concepts captured naturally.
-            </p>
-
-          </div>
+          </ScrollAnimation>
 
 
-          <div className="home-prewedding-card">
+          <ScrollAnimation animation="fade-up">
 
-            <span className="prewedding-number">
-              03
-            </span>
+            <div className="home-prewedding-card">
 
-            <h3>
-              Professional Editing
-            </h3>
+              <span className="prewedding-number">
+                02
+              </span>
 
-            <p>
-              Premium editing with cinematic transitions,
-              trending concepts and professional finishing.
-            </p>
+              <h3>
+                Couple Content
+              </h3>
 
-          </div>
+              <p>
+                Beautiful candid moments and creative couple
+                concepts captured naturally.
+              </p>
+
+            </div>
+
+          </ScrollAnimation>
+
+
+          <ScrollAnimation animation="fade-up">
+
+            <div className="home-prewedding-card">
+
+              <span className="prewedding-number">
+                03
+              </span>
+
+              <h3>
+                Professional Editing
+              </h3>
+
+              <p>
+                Premium editing with cinematic transitions,
+                trending concepts and professional finishing.
+              </p>
+
+            </div>
+
+          </ScrollAnimation>
 
         </div>
 
       </section>
 
 
-
-
-      {/* PACKAGES */}
+      {/* =====================================================
+          PACKAGES
+          ===================================================== */}
 
       <section className="packages section">
 
-        <p className="section-subtitle">
-          CHOOSE YOUR EXPERIENCE
-        </p>
+        <ScrollAnimation animation="fade-up">
 
-        <h2>
-          wedding-Packages
-        </h2>
+          <p className="section-subtitle">
+            CHOOSE YOUR EXPERIENCE
+          </p>
 
-        <p className="packages-intro">
-          Choose the package that matches your celebration.
-          Every package can also be customized according to your needs.
-        </p>
+          <h2>
+            wedding-Packages
+          </h2>
 
-        <SwipeContainer className="package-grid"> {packages.map((pkg, index) => ( <PackageCard key={index} pkg={pkg} onChoose={contactOnWhatsApp} /> ))} </SwipeContainer>
+          <p className="packages-intro">
+            Choose the package that matches your celebration.
+            Every package can also be customized according to your needs.
+          </p>
+
+        </ScrollAnimation>
+
+
+        {/* Swipe remains exactly as before */}
+
+        <ScrollAnimation
+          animation="fade-up"
+          className="packages-animation"
+        >
+
+          <SwipeContainer className="package-grid">
+
+            {packages.map((pkg, index) => (
+
+              <PackageCard
+                key={index}
+                pkg={pkg}
+                onChoose={contactOnWhatsApp}
+              />
+
+            ))}
+
+          </SwipeContainer>
+
+        </ScrollAnimation>
 
       </section>
 
 
+      {/* =====================================================
+          PORTFOLIO
+          ===================================================== */}
 
       <section className="portfolio-section section">
 
-        <p className="section-subtitle">
-          OUR WORK
-        </p>
+        <ScrollAnimation animation="fade-up">
 
-        <h2>
-          Featured Moments
-        </h2>
+          <p className="section-subtitle">
+            OUR WORK
+          </p>
+
+          <h2>
+            Featured Moments
+          </h2>
+
+        </ScrollAnimation>
+
 
         <div className="gallery">
 
-          <div className="gallery-item">
+          <ScrollAnimation animation="fade-left">
 
-            <img
-              src="/images/cinematic.jpg"
-              alt="Wedding moment"
-            />
+            <div className="gallery-item">
 
-            <div className="gallery-overlay">
-              <h3>Wedding Stories</h3>
-              <p>Cinematic Wedding Film</p>
+              <img
+                src="/images/cinematic.jpg"
+                alt="Wedding moment"
+              />
+
+              <div className="gallery-overlay">
+
+                <h3>
+                  Wedding Stories
+                </h3>
+
+                <p>
+                  Cinematic Wedding Film
+                </p>
+
+              </div>
+
             </div>
 
-          </div>
+          </ScrollAnimation>
 
 
-          <div className="gallery-item">
+          <ScrollAnimation animation="fade-up">
 
-            <img
-              src="/images/ig.webp"
-              alt="Wedding celebration"
-            />
+            <div className="gallery-item">
 
-            <div className="gallery-overlay">
-              <h3>Wedding Reels</h3>
-              <p>Instagram Creative</p>
+              <img
+                src="/images/ig.webp"
+                alt="Wedding celebration"
+              />
+
+              <div className="gallery-overlay">
+
+                <h3>
+                  Wedding Reels
+                </h3>
+
+                <p>
+                  Instagram Creative
+                </p>
+
+              </div>
+
             </div>
 
-          </div>
+          </ScrollAnimation>
 
 
-          <div className="gallery-item">
+          <ScrollAnimation animation="fade-right">
 
-            <img
-              src="/images/createive.avif"
-              alt="Creative wedding film"
-            />
+            <div className="gallery-item">
 
-            <div className="gallery-overlay">
-              <h3>Creative Films</h3>
-              <p>Premium Video Editing</p>
+              <img
+                src="/images/createive.avif"
+                alt="Creative wedding film"
+              />
+
+              <div className="gallery-overlay">
+
+                <h3>
+                  Creative Films
+                </h3>
+
+                <p>
+                  Premium Video Editing
+                </p>
+
+              </div>
+
             </div>
 
-          </div>
+          </ScrollAnimation>
 
         </div>
 
-      </section>  
+      </section>
 
 
-      {/* HAPPY CUSTOMERS */}
+      {/* =====================================================
+          HAPPY CUSTOMERS
+          ===================================================== */}
 
-    <section className="testimonials section">
+      <section className="testimonials section">
 
-  <p className="section-subtitle">
-    HAPPY CUSTOMERS
-  </p>
+        <ScrollAnimation animation="fade-up">
 
-  <h2>
-    What Our Clients Say
-  </h2>
+          <p className="section-subtitle">
+            HAPPY CUSTOMERS
+          </p>
 
-  <div className="testimonial-grid">
+          <h2>
+            What Our Clients Say
+          </h2>
 
-    {testimonials.map((testimonial, index) => (
-      <TestimonialCard
-        key={index}
-        testimonial={testimonial}
-      />
-    ))}
-
-  </div>
-
-  <div className="customers-more-button">
-    <Link
-      to="/customers"
-      className="outline-button"
-    >
-      View All Customers
-    </Link>
-  </div>
-
-</section>
+        </ScrollAnimation>
 
 
-      {/* CONTACT PREVIEW */}
+        <div className="testimonial-grid">
+
+          {testimonials.map((testimonial, index) => (
+
+            <ScrollAnimation
+              key={index}
+              animation="fade-up"
+            >
+
+              <TestimonialCard
+                testimonial={testimonial}
+              />
+
+            </ScrollAnimation>
+
+          ))}
+
+        </div>
+
+
+        <ScrollAnimation animation="fade-up">
+
+          <div className="customers-more-button">
+
+            <Link
+              to="/customers"
+              className="outline-button"
+            >
+              View All Customers
+            </Link>
+
+          </div>
+
+        </ScrollAnimation>
+
+      </section>
+
+
+      {/* =====================================================
+          CONTACT PREVIEW
+          ===================================================== */}
 
       <section className="contact section">
 
-        <p className="section-subtitle">
-          LET'S CREATE TOGETHER
-        </p>
+        <ScrollAnimation animation="zoom">
 
-        <h2>
-          Let's Make Your Story Beautiful
-        </h2>
+          <p className="section-subtitle">
+            LET'S CREATE TOGETHER
+          </p>
 
-        <p>
-          Have a wedding, event or creative project?
-          Get in touch with us.
-        </p>
+          <h2>
+            Let's Make Your Story Beautiful
+          </h2>
 
-        <Link
-          to="/contact"
-          className="main-button"
-        >
-          Contact Us
-        </Link>
+          <p>
+            Have a wedding, event or creative project?
+            Get in touch with us.
+          </p>
+
+          <Link
+            to="/contact"
+            className="main-button"
+          >
+            Contact Us
+          </Link>
+
+        </ScrollAnimation>
 
       </section>
 
@@ -402,3 +572,4 @@ function Home() {
 }
 
 export default Home;
+
