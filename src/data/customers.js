@@ -2,7 +2,7 @@
 const customers = [
   {
     name: "A❤️T",
-    image: "/images/c1.jpeg",
+    image: "/images/C1.jpeg",
     instagram: "https://www.instagram.com/a.man_got_tripp?stkn=MWNkcjkxb3lqMnNnZw==",
   },
 
