@@ -431,3 +431,85 @@ p {
 }
 
 
+
+/* =========================================================
+   SWIPE CONTAINER
+   Wedding + Pre-Wedding Packages
+   ========================================================= */
+
+.swipe-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 25px;
+
+  cursor: grab;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  user-select: none;
+}
+
+.swipe-container::-webkit-scrollbar {
+  display: none;
+}
+
+.swipe-container.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.swipe-container img {
+  pointer-events: none;
+  user-select: none;
+}
+
+.swipe-container > * {
+  flex: 0 0 320px;
+}
+
+
+/* TABLET */
+
+@media (max-width: 1024px) {
+  .swipe-container {
+    gap: 20px;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 300px;
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .swipe-container {
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+  .swipe-container {
+    gap: 14px;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 88%;
+  }
+}
+

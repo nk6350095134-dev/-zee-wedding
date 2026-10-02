@@ -14,16 +14,15 @@ function SwipeContainer({ children, className = "" }) {
     if (!slider) return;
 
     setIsDragging(true);
-
     setStartX(e.pageX - slider.offsetLeft);
     setScrollLeft(slider.scrollLeft);
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseUp = () => {
     setIsDragging(false);
   };
 
-  const handleMouseUp = () => {
+  const handleMouseLeave = () => {
     setIsDragging(false);
   };
 
@@ -33,9 +32,9 @@ function SwipeContainer({ children, className = "" }) {
     e.preventDefault();
 
     const slider = sliderRef.current;
+    if (!slider) return;
 
     const x = e.pageX - slider.offsetLeft;
-
     const walk = (x - startX) * 1.5;
 
     slider.scrollLeft = scrollLeft - walk;
@@ -44,10 +43,12 @@ function SwipeContainer({ children, className = "" }) {
   return (
     <div
       ref={sliderRef}
-      className={`swipe-container ${isDragging ? "dragging" : ""} ${className}`}
+      className={`swipe-container ${
+        isDragging ? "dragging" : ""
+      } ${className}`}
       onMouseDown={handleMouseDown}
-      onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
     >
       {children}
