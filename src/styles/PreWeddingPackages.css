@@ -1,0 +1,518 @@
+/* =====================================================
+   PRE-WEDDING PAGE
+   ===================================================== */
+
+.pre-wedding-page {
+  min-height: 100vh;
+  background: #111;
+  color: #fff;
+  padding: 100px 6%;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.pre-wedding-header {
+  max-width: 750px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.pre-wedding-small-title {
+  color: #c9a96e;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+
+.pre-wedding-header h1 {
+  font-size: 48px;
+  font-weight: 500;
+  margin: 0 0 18px;
+}
+
+.pre-wedding-description {
+  color: #aaa;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   PACKAGE CONTAINER
+   ===================================================== */
+
+.pre-wedding-packages {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+
+/* =====================================================
+   CARD
+   ===================================================== */
+
+.pre-wedding-card {
+  position: relative;
+
+  background: #181818;
+
+  border: 1px solid #292929;
+  border-radius: 18px;
+
+  padding: 32px 26px;
+
+  min-height: 650px;
+
+  box-sizing: border-box;
+
+  transition: 0.3s ease;
+}
+
+.pre-wedding-card:hover {
+  transform: translateY(-8px);
+  border-color: #c9a96e;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =====================================================
+   POPULAR CARD
+   ===================================================== */
+
+.popular-card {
+  border-color: #c9a96e;
+}
+
+.popular-badge {
+  position: absolute;
+
+  top: -13px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: #c9a96e;
+  color: #111;
+
+  padding: 7px 18px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   CARD CONTENT
+   ===================================================== */
+
+.pre-wedding-card-content {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.pre-wedding-card-content h2 {
+  font-size: 24px;
+  font-weight: 500;
+
+  margin: 0 0 15px;
+}
+
+.pre-wedding-price {
+  color: #c9a96e;
+
+  font-size: 32px;
+  font-weight: 600;
+
+  margin-bottom: 20px;
+}
+
+.pre-wedding-line {
+  height: 1px;
+
+  width: 100%;
+
+  background: #303030;
+
+  margin-bottom: 22px;
+}
+
+
+/* =====================================================
+   FEATURES
+   ===================================================== */
+
+.pre-wedding-card-content ul {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.pre-wedding-card-content li {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 9px;
+
+  color: #d0d0d0;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.check-icon {
+  color: #c9a96e;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+.pre-wedding-btn {
+  width: 100%;
+
+  margin-top: auto;
+
+  padding: 13px 20px;
+
+  background: transparent;
+
+  border: 1px solid #c9a96e;
+
+  border-radius: 30px;
+
+  color: #c9a96e;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.pre-wedding-btn:hover {
+  background: #c9a96e;
+  color: #111;
+}
+
+
+/* =====================================================
+   LAPTOP
+   ===================================================== */
+
+@media (max-width: 1200px) {
+
+  .pre-wedding-page {
+    padding: 80px 4%;
+  }
+
+  .pre-wedding-packages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =====================================================
+   TABLET + MOBILE
+   SWIPEABLE
+   ===================================================== */
+
+@media (max-width: 1024px) {
+
+  .pre-wedding-packages {
+
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 20px;
+
+    padding: 20px 5px 30px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .pre-wedding-packages::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pre-wedding-card {
+
+    min-width: 330px;
+
+    max-width: 330px;
+
+    flex: 0 0 330px;
+
+    scroll-snap-align: start;
+  }
+
+  .pre-wedding-card:hover {
+    transform: none;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .pre-wedding-page {
+    padding: 60px 15px;
+  }
+
+  .pre-wedding-header {
+    margin-bottom: 35px;
+  }
+
+  .pre-wedding-small-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .pre-wedding-header h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .pre-wedding-description {
+    font-size: 14px;
+  }
+
+  .pre-wedding-packages {
+    gap: 15px;
+  }
+
+  .pre-wedding-card {
+
+    min-width: 86vw;
+
+    max-width: 86vw;
+
+    flex: 0 0 86vw;
+
+    padding: 30px 22px;
+
+    border-radius: 16px;
+  }
+
+  .pre-wedding-card-content h2 {
+    font-size: 22px;
+  }
+
+  .pre-wedding-price {
+    font-size: 29px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+  .pre-wedding-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .pre-wedding-card {
+
+    min-width: 88vw;
+
+    max-width: 88vw;
+
+    flex-basis: 88vw;
+  }
+
+}
+
+
+/* =========================================================
+   PRE-WEDDING PACKAGE IMAGE
+   ========================================================= */
+
+.pre-wedding-image {
+  width: 100%;
+  height: 300px;
+
+  overflow: hidden;
+
+  border-radius: 14px 14px 0 0;
+
+  background: #181818;
+}
+
+.pre-wedding-image img {
+  width: 100%;
+  height: 150%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+
+/* Image zoom on card hover */
+
+.pre-wedding-card:hover .pre-wedding-image img {
+  transform: scale(1.06);
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .pre-wedding-image {
+    height: 210px;
+  }
+
+}
+
+
+/* Small mobile */
+
+@media (max-width: 480px) {
+
+  .pre-wedding-image {
+    height: 190px;
+  }
+
+}
+
+
+/* =========================================================
+   PRE-WEDDING WHATSAPP BUTTON
+   ========================================================= */
+
+.pre-wedding-btn {
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 14px 20px;
+
+  border: 1px solid #c9a96e;
+
+  border-radius: 8px;
+
+  background: #c9a96e;
+
+  color: #111111;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+
+/* Hover */
+
+.pre-wedding-btn:hover {
+  background: transparent;
+
+  color: #c9a96e;
+
+  border-color: #c9a96e;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(201, 169, 110, 0.15);
+}
+
+
+/* Click effect */
+
+.pre-wedding-btn:active {
+  transform: translateY(0);
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .pre-wedding-btn {
+    padding: 13px 18px;
+
+    font-size: 13px;
+
+    margin-top: 22px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .pre-wedding-btn {
+    padding: 12px 16px;
+
+    font-size: 13px;
+
+    border-radius: 7px;
+  }
+
+}
+

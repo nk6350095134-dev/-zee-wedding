@@ -1,0 +1,433 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #111111;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.section {
+  padding: 90px 8%;
+}
+
+.section-subtitle {
+  color: #c9a46c;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 45px;
+  margin-bottom: 25px;
+}
+
+p {
+  color: #d0d0d0;
+  line-height: 1.7;
+}
+
+.main-button,
+.outline-button {
+  display: inline-block;
+  padding: 14px 28px;
+  margin-top: 25px;
+  border: 1px solid #c9a46c;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.main-button {
+  background: #c9a46c;
+  color: #111;
+}
+
+.main-button:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+.outline-button {
+  color: #c9a46c;
+}
+
+.outline-button:hover {
+  background: #c9a46c;
+  color: #111;
+}
+
+.page-header {
+  text-align: center;
+  padding: 130px 8% 75px;
+  background: #181818;
+}
+
+.page-header h1 {
+  font-size: 55px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 70px 6%;
+  }
+
+  h2 {
+    font-size: 38px;
+  }
+
+  .page-header h1 {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 60px 5%;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .page-header {
+    padding: 100px 5% 60px;
+  }
+
+  .page-header h1 {
+    font-size: 38px;
+  }
+}
+
+
+/* =========================================================
+   COMMON PAGE HEADER
+   Used on:
+   About
+   Services
+   Packages
+   Pre-Wedding
+   Portfolio
+   Customers
+   Contact
+   ========================================================= */
+
+.page-header {
+  position: relative;
+
+  width: 100%;
+  min-height: 400px;
+
+  padding: 12px 7% 9px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  box-sizing: border-box;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+
+/* DARK OVERLAY */
+
+.page-header::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.90) 0%,
+      rgba(0, 0, 0, 0.70) 45%,
+      rgba(0, 0, 0, 0.30) 100%
+    );
+
+  z-index: 0;
+}
+
+
+/* HEADER CONTENT */
+
+.page-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* SMALL TITLE */
+
+.page-header .section-subtitle {
+  margin: 0 0 14px;
+
+  color: #c9a96e;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+
+/* MAIN TITLE */
+
+.page-header h1 {
+  margin: 0 0 18px;
+
+  color: #ffffff;
+
+  font-size: 58px;
+  font-weight: 500;
+
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+
+/* DESCRIPTION */
+
+.page-header p:not(.section-subtitle) {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #b5b5b5;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .page-header {
+    min-height: 390px;
+
+    padding: 110px 6% 75px;
+
+    background-position: center;
+  }
+
+  .page-header h1 {
+    font-size: 48px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .page-header {
+    min-height: 350px;
+
+    padding: 100px 25px 65px;
+
+    align-items: flex-start;
+
+    background-position: center;
+  }
+
+  .page-header::before {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.88),
+        rgba(0, 0, 0, 0.60)
+      );
+  }
+
+  .page-header .section-subtitle {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+  }
+
+  .page-header h1 {
+    font-size: 40px;
+    line-height: 1.15;
+  }
+
+  .page-header p:not(.section-subtitle) {
+    max-width: 520px;
+
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .page-header {
+    min-height: 310px;
+
+    padding: 90px 18px 55px;
+  }
+
+  .page-header .section-subtitle {
+    margin-bottom: 10px;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .page-header h1 {
+    margin-bottom: 14px;
+
+    font-size: 32px;
+  }
+
+  .page-header p:not(.section-subtitle) {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+}
+
+
+/* =========================================================
+   MOUSE + TOUCH SWIPE
+   ========================================================= */
+
+.swipe-container {
+  display: flex;
+
+  overflow-x: auto;
+
+  gap: 25px;
+
+  cursor: grab;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  user-select: none;
+
+  touch-action: pan-x;
+}
+
+.swipe-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* MOUSE IS DRAGGING */
+
+.swipe-container.dragging {
+  cursor: grabbing;
+
+  scroll-behavior: auto;
+}
+
+
+/* PREVENT IMAGE DRAG */
+
+.swipe-container img {
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   CARD WIDTH
+   ========================================================= */
+
+.swipe-container > * {
+  flex: 0 0 320px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .swipe-container {
+    gap: 20px;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 300px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .swipe-container {
+    gap: 16px;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 85%;
+
+    scroll-snap-align: start;
+  }
+
+}
+
+

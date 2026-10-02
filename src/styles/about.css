@@ -1,0 +1,764 @@
+/* =========================================================
+   ZEE WEDDINGS - ABOUT PAGE
+   ========================================================= */
+
+.about-page-main {
+  background: #302d29;
+  color: #24201c;
+  overflow: hidden;
+}
+
+.about-container {
+  width: min(1080px, 88%);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.about-reference-hero {
+  min-height: 570px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff;
+}
+
+.about-hero-inner {
+  width: min(1080px, 88%);
+  min-height: 570px;
+  margin: auto;
+  position: relative;
+  padding-top: 25px;
+}
+
+.about-hero-brand {
+  position: absolute;
+  top: 23px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.85;
+  font-family: Georgia, serif;
+  letter-spacing: 1px;
+}
+
+.about-hero-brand span {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.about-hero-brand small {
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.about-hero-line {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+.about-hero-content {
+  position: absolute;
+  left: 0;
+  top: 135px;
+}
+
+.about-eyebrow {
+  color: #c7a875;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.about-hero-content h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(60px, 7vw, 94px);
+  line-height: 0.88;
+  font-weight: 400;
+  letter-spacing: -4px;
+  margin: 0;
+}
+
+.about-hero-content h1 span {
+  color: #c7a875;
+  font-style: italic;
+  font-size: 0.78em;
+  letter-spacing: -2px;
+}
+
+.about-hero-tagline {
+  margin-top: 35px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: #fff;
+}
+
+
+/* =========================================================
+   COMMON HEADING
+   ========================================================= */
+
+.about-section-label {
+  margin: 0;
+  color: #9d8050;
+  font-size: 17px;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+}
+
+.gold-small-line {
+  width: 34px;
+  height: 2px;
+  background: #b79a6a;
+  margin-top: 8px;
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   WHO WE ARE
+   ========================================================= */
+
+.who-we-are {
+  padding-top: 55px;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.who-content {
+  padding-right: 15px;
+}
+
+.who-content p:not(.about-section-label) {
+  color: #fffdf9;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.who-image-wrapper {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.who-image-wrapper > img {
+  width: 100%;
+  height: 275px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.instant-content-card {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+  background: #fffdf9;
+  border-radius: 16px;
+  padding: 17px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(249, 249, 253, 0.22);
+}
+
+.instant-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 2px solid #c5a675;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b09260;
+  font-size: 20px;
+}
+
+.instant-content-card h4 {
+  font-family: Arial, sans-serif;
+  margin: 0 0 5px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.instant-content-card p {
+  margin: 0;
+  color: #555;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   WHAT WE DO
+   ========================================================= */
+
+.what-we-do {
+  padding-top: 5px;
+  padding-bottom: 45px;
+}
+
+.creative-services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 10px;
+}
+
+.creative-service {
+  text-align: center;
+  padding: 8px 18px;
+  border-right: 1px solid #ddd6cd;
+}
+
+.creative-service:last-child {
+  border-right: none;
+}
+
+.creative-service-icon {
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b79a68;
+  font-size: 31px;
+  margin-bottom: 8px;
+}
+
+.creative-service h3 {
+  font-family: Arial, sans-serif;
+  color: #fffdf9;
+  font-size: 12px;
+  line-height: 1.25;
+  margin: 0 0 7px;
+  font-weight: 700;
+}
+
+.creative-service p {
+  font-family: Arial, sans-serif;
+  color: #c4a46f;
+  font-size: 10.5px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+
+/* =========================================================
+   EXPERIENCE
+   ========================================================= */
+
+.experience-section {
+  padding-bottom: 48px;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.experience-card {
+  min-height: 170px;
+  border-radius: 13px;
+  background: #171717;
+  color: #fff;
+  text-align: center;
+  padding: 20px 12px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.experience-icon {
+  color: #c4a46f;
+  font-size: 27px;
+  margin-bottom: 5px;
+}
+
+.experience-card strong {
+  color: #c8a76e;
+  font-family: Georgia, serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.experience-card h3 {
+  color: #c8a76e;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  margin: 5px 0 3px;
+  letter-spacing: 0.4px;
+}
+
+.experience-card p {
+  color: #eee;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 130px;
+}
+
+
+/* =========================================================
+   OUR SERVICES
+   ========================================================= */
+
+.our-services {
+  padding-bottom: 45px;
+}
+
+.services-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin-top: 5px;
+}
+
+.reference-service {
+  text-align: center;
+  min-height: 95px;
+  padding: 5px 8px;
+  border-right: 1px solid #ddd6cd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reference-service:last-child {
+  border-right: none;
+}
+
+.reference-service-icon {
+  color: #9d8358;
+  font-size: 28px;
+  height: 38px;
+  margin-bottom: 5px;
+}
+
+.reference-service h3,
+.reference-service span {
+  color: #fffdf9;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.all-events {
+  text-align: center;
+  color: #fffdf9;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+
+/* =========================================================
+   PROMISE
+   ========================================================= */
+
+.promise-section {
+  min-height: 210px;
+  background: #171717;
+  border-radius: 17px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 14px;
+}
+
+.promise-content {
+  padding: 25px 30px;
+}
+
+.promise-title {
+  color: #c5a36d;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  margin: 0 0 13px;
+}
+
+.promise-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.promise-content li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.promise-content li svg {
+  color: #c5a36d;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.promise-content li span {
+  color: #eee;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.promise-image {
+  height: 100%;
+}
+
+.promise-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   VISION
+   ========================================================= */
+
+.vision-section {
+  min-height: 120px;
+  background: #fffdf9;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 20px 28px;
+  margin-bottom: 12px;
+}
+
+.vision-content {
+  padding-right: 30px;
+}
+
+.vision-content .gold-small-line {
+  margin-bottom: 10px;
+}
+
+.vision-content > p:last-child {
+  color: #494540;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.vision-quote {
+  border-left: 1px solid #ded5ca;
+  padding-left: 45px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.vision-quote span {
+  color: #393530;
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.vision-quote b {
+  color: #b59a6d;
+  font-size: 25px;
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.about-final-cta {
+  width: min(1080px, 88%);
+  min-height: 58px;
+  margin: 0 auto 25px;
+  padding: 8px 25px;
+  border-radius: 15px;
+  background: #171717;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cta-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #c6a36b;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.cta-left svg {
+  font-size: 17px;
+}
+
+.book-date-button {
+  min-width: 220px;
+  padding: 11px 20px;
+  border-radius: 30px;
+  background: #c6a36b;
+  color: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: 0.3s ease;
+}
+
+.book-date-button:hover {
+  background: #e0c28c;
+  transform: translateY(-2px);
+}
+
+.book-date-button svg {
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+.who-image-wrapper,
+.experience-card,
+.creative-service,
+.reference-service {
+  transition: 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+}
+
+.creative-service:hover,
+.reference-service:hover {
+  transform: translateY(-3px);
+}
+
+.instant-content-card {
+  animation: aboutFloat 4s ease-in-out infinite;
+}
+
+@keyframes aboutFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .about-reference-hero,
+  .about-hero-inner {
+    min-height: 520px;
+  }
+
+  .who-we-are {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .creative-services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 25px;
+  }
+
+  .creative-service:nth-child(3) {
+    border-right: none;
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-reference-grid {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+  }
+
+  .reference-service:nth-child(4) {
+    border-right: none;
+  }
+
+  .promise-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .about-container,
+  .about-hero-inner,
+  .about-final-cta {
+    width: 90%;
+  }
+
+  .about-reference-hero,
+  .about-hero-inner {
+    min-height: 500px;
+  }
+
+  .about-hero-brand span {
+    font-size: 19px;
+  }
+
+  .about-hero-brand small {
+    font-size: 10px;
+  }
+
+  .about-hero-content {
+    top: 150px;
+  }
+
+  .about-eyebrow {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 58px;
+    letter-spacing: -3px;
+  }
+
+  .about-hero-tagline {
+    font-size: 16px;
+    margin-top: 25px;
+  }
+
+  .who-we-are {
+    padding-top: 40px;
+  }
+
+  .who-image-wrapper > img {
+    height: 240px;
+  }
+
+  .instant-content-card {
+    left: 4%;
+    right: 4%;
+    padding: 13px 15px;
+  }
+
+  .creative-services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .creative-service {
+    border-right: 1px solid #ddd6cd;
+  }
+
+  .creative-service:nth-child(2n) {
+    border-right: none;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .experience-card {
+    min-height: 145px;
+  }
+
+  .experience-card strong {
+    font-size: 31px;
+  }
+
+  .services-reference-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .reference-service {
+    border-right: 1px solid #ddd6cd;
+  }
+
+  .reference-service:nth-child(4n) {
+    border-right: none;
+  }
+
+  .promise-section {
+    grid-template-columns: 1fr;
+  }
+
+  .promise-image {
+    max-height: 210px;
+  }
+
+  .vision-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .vision-content {
+    padding-right: 0;
+  }
+
+  .vision-quote {
+    border-left: none;
+    border-top: 1px solid #ded5ca;
+    padding-left: 0;
+    padding-top: 18px;
+  }
+
+  .about-final-cta {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .cta-left {
+    font-size: 11px;
+  }
+
+  .book-date-button {
+    width: 100%;
+  }
+}

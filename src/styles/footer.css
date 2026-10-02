@@ -1,0 +1,16 @@
+footer {
+  text-align: center;
+  padding: 60px 20px;
+  background: #0b0b0b;
+  border-top: 1px solid #242424;
+}
+
+footer h3 {
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+footer p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}

@@ -1,0 +1,82 @@
+const preWeddingPackages = [
+  {
+    name: "Starter Package",
+    price: "₹7,999",
+    image: "/images/p1.jpg",
+    features: [
+      "5 Hours of Shoot Time per Day",
+      "iPhone 17 Pro Max Shoot",
+      "Couple-Focused Content",
+      "Creative Reel Concepts",
+      "Social Media Ready Content",
+      "One Dedicated Content Creator",
+      "Cinematic Reels",
+      "Professional Editing",
+      "Candid & Natural Moments",
+      "Complimentary iPhone Photography",
+      "High-Resolution Delivery",
+    ],
+  },
+
+  {
+    name: "Signature Package",
+    price: "₹11,999",
+     image: "/images/p2.jpg",
+    features: [
+      "5 Hours of Shoot Time per Day",
+      "iPhone 17 Pro Max Shoot",
+      "Couple Transitions",
+      "Candid Moments",
+      "Complimentary iPhone Photography",
+      "Social Media Ready Content",
+      "One Dedicated Content Creator",
+      "Cinematic & Trending Reels",
+      "Creative Couple Content Concepts",
+      "Professional Video Editing",
+      "Up to 3 Days Coverage",
+    ],
+  },
+
+  {
+    name: "Premium Package",
+    price: "₹15,999",
+     image: "/images/p3.webp",
+    features: [
+      "5 Hours of Shoot Time per Day",
+      "iPhone 17 Pro Max Shoot",
+      "Trending Video Concepts",
+      "Creative Storyline",
+      "Dedicated BTS Coverage",
+      "Professional Reel Editing",
+      "Cinematic Reels & Concepts",
+      "Couple Transitions",
+      "Candid & Fun Moments",
+      "Complimentary iPhone Photography",
+      "Social Media Content",
+    ],
+  },
+
+  {
+    name: "Royal Package",
+    price: "₹19,999",
+     image: "/images/p4.webp",
+    popular: true,
+    features: [
+      "5 Hours of Shoot Time per Day",
+      "iPhone 17 Pro Max Shoot",
+      "Multiple Content Concepts",
+      "Candid & Fun Moments",
+      "Dedicated BTS Creator",
+      "Professional Editing",
+      "Instant Reel Editing",
+      "Two Dedicated Content Creators",
+      "Cinematic & Trending Reels",
+      "Creative Transitions",
+      "Dedicated BTS Coverage",
+      "Complimentary iPhone Photography",
+      "Social Media Ready Content",
+    ],
+  },
+];
+
+export default preWeddingPackages;

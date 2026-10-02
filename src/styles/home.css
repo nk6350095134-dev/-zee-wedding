@@ -1,0 +1,1051 @@
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero {
+  min-height: 90vh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+
+  padding: 100px 8%;
+
+  position: relative;
+}
+
+.hero-content {
+  max-width: 750px;
+}
+
+.small-title {
+  color: #c9a46c;
+
+  font-size: 13px;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: 70px;
+
+  line-height: 1.05;
+
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  color: #c9a46c;
+
+  font-style: italic;
+}
+
+.hero-text {
+  max-width: 600px;
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   ABOUT PREVIEW
+   ===================================================== */
+
+.about {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+
+  background: #111111;
+}
+
+.about-image img {
+  width: 100%;
+
+  height: 550px;
+
+  object-fit: cover;
+
+  border-radius: 5px;
+}
+
+.about-content {
+  max-width: 600px;
+}
+
+.about-content p {
+  margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   SERVICES
+   ===================================================== */
+
+.services {
+  background: #151515;
+
+  text-align: center;
+}
+
+.service-grid {
+  margin-top: 45px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 25px;
+}
+
+.service-card {
+  padding: 35px 25px;
+
+  background: #1c1c1c;
+
+  border: 1px solid #292929;
+
+  border-radius: 10px;
+
+  text-align: left;
+
+  transition: 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #c9a46c;
+}
+
+.service-number {
+  color: #c9a46c;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 24px;
+
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   PACKAGES
+   ===================================================== */
+
+.packages {
+  background: #111111;
+
+  text-align: center;
+}
+
+.packages-intro {
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+.package-grid {
+  margin-top: 50px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+
+  text-align: left;
+}
+
+.package-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background: #181818;
+
+  border: 1px solid #292929;
+
+  border-radius: 10px;
+
+  transition: 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #c9a46c;
+}
+
+.package-image {
+  width: 100%;
+
+  height: 270px;
+
+  overflow: hidden;
+}
+
+.package-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: 0.5s ease;
+}
+
+.package-card:hover .package-image img {
+  transform: scale(1.05);
+}
+
+.package-content {
+  padding: 28px;
+}
+
+.package-content h3 {
+  font-size: 27px;
+
+  margin-bottom: 10px;
+}
+
+.package-price {
+  color: #c9a46c;
+
+  font-size: 25px;
+
+  font-weight: bold;
+
+  margin-bottom: 15px;
+}
+
+.package-description {
+  font-size: 14px;
+
+  margin-bottom: 20px;
+}
+
+.package-content ul {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0;
+}
+
+.package-content li {
+  display: flex;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+
+  color: #d5d5d5;
+
+  font-size: 13px;
+}
+
+.package-content li span {
+  color: #c9a46c;
+}
+
+.popular-package {
+  border-color: #c9a46c;
+}
+
+.popular-label {
+  position: absolute;
+
+  top: 15px;
+
+  right: 15px;
+
+  background: #c9a46c;
+
+  color: #111111;
+
+  padding: 7px 12px;
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  z-index: 2;
+}
+
+.package-button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 13px;
+
+  background: #c9a46c;
+
+  color: #111111;
+
+  border: 1px solid #c9a46c;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.package-button:hover {
+  background: transparent;
+
+  color: #c9a46c;
+}
+
+
+/* =====================================================
+   PORTFOLIO
+   ===================================================== */
+
+.portfolio-section {
+  background: #151515;
+
+  text-align: center;
+}
+
+.gallery {
+  margin-top: 40px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.gallery-item {
+  position: relative;
+
+  height: 450px;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+}
+
+.gallery-item img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.07);
+}
+
+.gallery-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 35px 20px 20px;
+
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.9)
+  );
+
+  text-align: left;
+}
+
+.gallery-overlay h3 {
+  font-size: 24px;
+
+  margin-bottom: 5px;
+}
+
+.gallery-overlay p {
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   HAPPY CUSTOMERS
+   ===================================================== */
+
+.testimonials {
+  background: #111111;
+
+  text-align: center;
+}
+
+.testimonial-grid {
+  margin-top: 45px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.testimonial-card {
+  padding: 30px 25px;
+
+  background: #181818;
+
+  border: 1px solid #292929;
+
+  border-radius: 10px;
+
+  text-align: left;
+}
+
+.stars {
+  color: #c9a46c;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 18px;
+}
+
+.testimonial-review {
+  font-size: 14px;
+
+  margin-bottom: 20px;
+}
+
+.testimonial-card h3 {
+  font-size: 20px;
+
+  margin-bottom: 5px;
+}
+
+.testimonial-card span {
+  color: #c9a46c;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   CONTACT
+   ===================================================== */
+
+.contact {
+  background: #181818;
+
+  text-align: center;
+}
+
+.contact p {
+  max-width: 600px;
+
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .hero h1 {
+    font-size: 55px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================
+   MOBILE SWIPE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 80vh;
+
+    padding: 70px 5%;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
+
+  .about-image img {
+    height: 400px;
+  }
+
+
+  /* SERVICES SWIPE */
+
+  .service-grid {
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 16px;
+
+    padding: 10px 5px 25px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .service-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card {
+    flex: 0 0 82%;
+
+    scroll-snap-align: center;
+  }
+
+
+  /* PACKAGES SWIPE */
+
+  .package-grid {
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 16px;
+
+    padding: 10px 5px 25px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .package-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .package-card {
+    flex: 0 0 88%;
+
+    scroll-snap-align: center;
+  }
+
+
+  /* PORTFOLIO SWIPE */
+
+  .gallery {
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 16px;
+
+    padding: 10px 5px 25px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-item {
+    flex: 0 0 85%;
+
+    scroll-snap-align: center;
+
+    height: 420px;
+  }
+
+
+  /* CUSTOMER SWIPE */
+
+  .testimonial-grid {
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 16px;
+
+    padding: 10px 5px 25px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .testimonial-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial-card {
+    flex: 0 0 85%;
+
+    scroll-snap-align: center;
+  }
+}
+
+/* =====================================
+   MOBILE / TABLET SWIPE SECTIONS
+===================================== */
+
+@media (max-width: 900px) {
+
+  /* SERVICES */
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 5px 25px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services-grid .service-card {
+    min-width: 280px;
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+  }
+
+
+  /* PACKAGES */
+  .packages-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 5px 30px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .packages-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .packages-grid .package-card {
+    min-width: 300px;
+    max-width: 300px;
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+  }
+
+
+  /* PORTFOLIO */
+  .gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 5px 25px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery .gallery-item {
+    min-width: 300px;
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+  }
+
+
+  /* HAPPY CUSTOMERS */
+  .testimonials-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 5px 25px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials-grid .testimonial-card {
+    min-width: 290px;
+    flex: 0 0 290px;
+    scroll-snap-align: start;
+  }
+}
+
+
+/* =========================================================
+   HOME PRE-WEDDING SECTION
+   ========================================================= */
+
+.home-prewedding {
+  min-height: 600px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 70px;
+
+  padding: 100px 7%;
+
+  background: #111111;
+  color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.home-prewedding-content {
+  max-width: 560px;
+}
+
+.home-prewedding-content h2 {
+  margin: 0;
+
+  font-size: 55px;
+  line-height: 1.1;
+
+  font-weight: 500;
+}
+
+.home-prewedding-content h2 span {
+  color: #c9a96e;
+  font-style: italic;
+}
+
+.home-prewedding-text {
+  max-width: 500px;
+
+  margin: 25px 0 30px;
+
+  color: #aaaaaa;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   PRE-WEDDING CARDS
+   ========================================================= */
+
+.home-prewedding-cards {
+  width: 100%;
+  max-width: 560px;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+.home-prewedding-card {
+  min-height: 190px;
+
+  padding: 28px 25px;
+
+  background: #181818;
+
+  border: 1px solid #292929;
+
+  border-radius: 16px;
+
+  box-sizing: border-box;
+
+  transition: all 0.3s ease;
+}
+
+.home-prewedding-card:last-child {
+  grid-column: span 2;
+}
+
+.home-prewedding-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #c9a96e;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+/* NUMBER */
+
+.prewedding-number {
+  display: block;
+
+  color: #c9a96e;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 18px;
+}
+
+
+/* CARD TITLE */
+
+.home-prewedding-card h3 {
+  margin: 0 0 10px;
+
+  font-size: 20px;
+
+  font-weight: 500;
+}
+
+
+/* CARD TEXT */
+
+.home-prewedding-card p {
+  margin: 0;
+
+  color: #999999;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .home-prewedding {
+    padding: 80px 5%;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 50px;
+  }
+
+  .home-prewedding-content {
+    max-width: 700px;
+  }
+
+  .home-prewedding-content h2 {
+    font-size: 48px;
+  }
+
+  .home-prewedding-cards {
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE - SWIPEABLE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .home-prewedding {
+    padding: 65px 20px;
+  }
+
+  .home-prewedding-content h2 {
+    font-size: 38px;
+  }
+
+  .home-prewedding-text {
+    font-size: 14px;
+  }
+
+
+  /* Horizontal Swipe */
+
+  .home-prewedding-cards {
+
+    display: flex;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    gap: 15px;
+
+    padding-bottom: 15px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .home-prewedding-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .home-prewedding-card,
+  .home-prewedding-card:last-child {
+
+    min-width: 280px;
+
+    max-width: 280px;
+
+    flex: 0 0 280px;
+
+    min-height: 190px;
+
+    grid-column: unset;
+
+    scroll-snap-align: start;
+  }
+
+  .home-prewedding-card:hover {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .home-prewedding {
+    padding: 55px 15px;
+  }
+
+  .home-prewedding-content h2 {
+    font-size: 34px;
+  }
+
+  .home-prewedding-card,
+  .home-prewedding-card:last-child {
+
+    min-width: 260px;
+
+    max-width: 260px;
+
+    flex-basis: 260px;
+  }
+}
+
+
+/* Pre-Wedding Home Image */
+
+.home-pre-wedding-image {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.home-pre-wedding-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Image Hover Effect */
+
+.home-pre-wedding-image:hover img {
+  transform: scale(1.05);
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .home-pre-wedding-image {
+    height: 430px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .home-pre-wedding-image {
+    height: 350px;
+    border-radius: 8px;
+  }
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 400px) {
+  .home-pre-wedding-image {
+    height: 300px;
+  }
+}
+

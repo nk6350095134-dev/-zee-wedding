@@ -1,0 +1,76 @@
+.contact-page {
+  background: #111111;
+
+  min-height: 500px;
+
+  text-align: center;
+}
+
+.contact-info {
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+.contact-info h2 {
+  margin-bottom: 15px;
+}
+
+.contact-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  margin-top: 40px;
+
+  flex-wrap: wrap;
+}
+
+.social-button {
+  min-width: 190px;
+
+  padding: 16px 25px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border: 1px solid #c9a46c;
+
+  transition: 0.3s ease;
+}
+
+.whatsapp-button {
+  background: #c9a46c;
+
+  color: #111111;
+}
+
+.instagram-button {
+  color: #c9a46c;
+}
+
+.social-button:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 600px) {
+
+  .contact-buttons {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .social-button {
+    width: 100%;
+
+    max-width: 320px;
+  }
+}
