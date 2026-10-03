@@ -164,16 +164,47 @@
   margin: 0 auto;
 }
 
+/* =====================================================
+   WEDDING PACKAGE SWIPE
+   ===================================================== */
+
 .package-grid {
   margin-top: 50px;
 
-  display: grid;
+  display: flex;
 
-  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
 
   gap: 30px;
 
   text-align: left;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: pan-y;
+
+  overscroll-behavior-x: contain;
+
+  scroll-behavior: smooth;
+}
+
+.package-grid::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =====================================================
+   PACKAGE CARD
+   ===================================================== */
+
+.package-grid .package-card {
+  flex: 0 0 320px;
+  min-width: 320px;
 }
 
 .package-card {
@@ -1049,3 +1080,55 @@
   }
 }
 
+@media (max-width: 1024px) {
+
+  .package-grid {
+    gap: 20px;
+  }
+
+  .package-grid .package-card {
+    flex: 0 0 300px;
+    min-width: 300px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+
+  .package-grid {
+    gap: 16px;
+
+    padding: 5px 0 15px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    touch-action: pan-y;
+
+    scroll-snap-type: x proximity;
+
+    scroll-behavior: smooth;
+  }
+
+  .package-grid .package-card {
+    flex: 0 0 85%;
+    min-width: 85%;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .package-grid {
+    gap: 14px;
+  }
+
+  .package-grid .package-card {
+    flex: 0 0 88%;
+    min-width: 88%;
+  }
+}
