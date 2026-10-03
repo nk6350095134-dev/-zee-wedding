@@ -449,73 +449,134 @@
 }
 
 
-
-
 /* =====================================================
-   OUR WORK / PORTFOLIO SWIPE
+   OUR WORK / PORTFOLIO
    ===================================================== */
 
+
+   .portfolio-section {
+  text-align: center;
+}
+
 .gallery {
+
+  
+
+  width: 100%;
+  max-width: 1450px;
+
+  margin: 40px auto 0;
+
   display: flex;
   flex-wrap: nowrap;
 
-  width: 100%;
+  gap: 25px;
 
   overflow-x: auto;
-  overflow-y: hidden;
 
-  gap: 18px;
+  padding: 10px calc((100% - 350px) / 2) 30px;
 
-  padding: 10px 5px 30px;
+  box-sizing: border-box;
 
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 
   scroll-snap-type: x mandatory;
 
   overscroll-behavior-x: contain;
 
   cursor: grab;
+
+  user-select: none;
 }
 
 .gallery::-webkit-scrollbar {
   display: none;
 }
 
+/* =====================================================
+   OUR WORK / PORTFOLIO
+   ===================================================== */
 
-/* Each work card */
-.gallery-item {
-  flex: 0 0 320px;
+.gallery {
+  width: 100%;
+  max-width: 1200px;
 
-  width: 320px;
-  min-width: 320px;
-  max-width: 320px;
+  margin: 40px auto 0;
 
-  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 
-  scroll-snap-align: center;
+  gap: 25px;
 
-  flex-shrink: 0;
+  overflow: visible;
+
+  padding: 10px 0 30px;
+
+  box-sizing: border-box;
 }
 
 
 /* =====================================================
-   MOBILE
+   DESKTOP WORK CARDS
    ===================================================== */
 
-@media (max-width: 600px) {
+.gallery-item {
+  flex: 0 0 350px;
+
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+
+  height: 450px;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  flex-shrink: 0;
+}
+
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* =====================================================
+   TABLET / SMALL SCREEN
+   SWIPE ENABLED
+   ===================================================== */
+
+@media (max-width: 1024px) {
 
   .gallery {
     width: 100%;
 
+    max-width: none;
+
+    margin: 40px 0 0;
+
     display: flex;
-    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+
+    align-items: stretch;
+
+    gap: 20px;
 
     overflow-x: auto;
+    overflow-y: hidden;
 
-    gap: 15px;
+    padding: 10px 15vw 30px;
 
-    padding: 10px 15px 30px;
+    box-sizing: border-box;
 
     scroll-snap-type: x mandatory;
 
@@ -532,6 +593,60 @@
     display: none;
   }
 
+
+  .gallery-item {
+    flex: 0 0 70vw;
+
+    width: 70vw;
+    min-width: 70vw;
+    max-width: 70vw;
+
+    height: 430px;
+
+    scroll-snap-align: center;
+
+    scroll-snap-stop: always;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .gallery {
+    margin: 30px 0 0;
+
+    gap: 15px;
+
+    /*
+      85vw card
+      remaining 15vw / 2 = 7.5vw
+      so card center mein aayega
+    */
+    padding: 10px 7.5vw 30px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+
+    overscroll-behavior-x: contain;
+
+    touch-action: auto;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+
   .gallery-item {
     flex: 0 0 85vw;
 
@@ -539,23 +654,26 @@
     min-width: 85vw;
     max-width: 85vw;
 
-    height: 420px;
+    height: 430px;
 
     scroll-snap-align: center;
+
+    scroll-snap-stop: always;
   }
 }
 
 
 /* =====================================================
-   SMALL MOBILE
+   VERY SMALL MOBILE
    ===================================================== */
 
 @media (max-width: 400px) {
 
   .gallery {
     gap: 12px;
-    padding-left: 10px;
-    padding-right: 10px;
+
+    padding-left: 6vw;
+    padding-right: 6vw;
   }
 
   .gallery-item {
@@ -568,6 +686,7 @@
     height: 400px;
   }
 }
+
 
 /* =====================================================
    HAPPY CUSTOMERS
