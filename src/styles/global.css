@@ -1,4 +1,3 @@
-
 /* =========================================================
    GLOBAL RESET
    ========================================================= */
@@ -15,12 +14,13 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
+
   background: #111111;
   color: #ffffff;
+
   font-family: Arial, sans-serif;
 
-  /* Horizontal page overflow band.
-     Vertical page scrolling normal rahegi. */
   overflow-x: hidden;
 }
 
@@ -29,8 +29,15 @@ a {
   color: inherit;
 }
 
-button {
+button,
+input,
+textarea,
+select {
   font-family: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 img {
@@ -44,6 +51,7 @@ img {
    ========================================================= */
 
 .section {
+  width: 100%;
   padding: 90px 8%;
 }
 
@@ -54,10 +62,13 @@ img {
 
 .section-subtitle {
   color: #c9a46c;
+
   font-size: 13px;
-  letter-spacing: 3px;
-  margin-bottom: 15px;
   font-weight: 600;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 15px;
 }
 
 
@@ -70,6 +81,13 @@ h2,
 h3 {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
 }
 
 h2 {
@@ -101,7 +119,13 @@ p {
 
   border: 1px solid #c9a46c;
 
-  transition: 0.3s ease;
+  font-size: 14px;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   cursor: pointer;
 }
@@ -114,6 +138,7 @@ p {
 .main-button:hover {
   background: transparent;
   color: #ffffff;
+  transform: translateY(-3px);
 }
 
 .outline-button {
@@ -124,6 +149,7 @@ p {
 .outline-button:hover {
   background: #c9a46c;
   color: #111111;
+  transform: translateY(-3px);
 }
 
 
@@ -154,7 +180,7 @@ p {
 
 
 /* =========================================================
-   PAGE HEADER DARK OVERLAY
+   PAGE HEADER OVERLAY
    ========================================================= */
 
 .page-header::before {
@@ -237,68 +263,50 @@ p {
 
 /* =========================================================
    SWIPE CONTAINER
-   Wedding Packages
-   Pre-Wedding Packages
+   Used by:
+   - Wedding Packages
+   - Pre-Wedding Packages
    ========================================================= */
 
 .swipe-container {
   display: flex;
-
-   flex: 0 0 320px;
-
-  transition:
-    transform 0.35s ease,
-    opacity 0.35s ease;
+  flex-direction: row;
+  flex-wrap: nowrap;
 
   width: 100%;
 
-  /* Horizontal cards scroll */
-  overflow-x: auto;
-
-  /* Container ke andar vertical scroll nahi */
-  overflow-y: hidden;
-
   gap: 25px;
 
-  cursor: grab;
+  overflow-x: auto;
+  overflow-y: hidden;
 
   scrollbar-width: none;
 
-  /* iPhone / Android smooth scrolling */
   -webkit-overflow-scrolling: touch;
+
+  scroll-behavior: smooth;
+
+  overscroll-behavior-x: contain;
 
   user-select: none;
 
+  cursor: grab;
+
+  will-change: scroll-position;
+
   /*
-    IMPORTANT:
+    Vertical movement:
+    normal website scroll
 
-    Vertical finger movement = website/page scroll
-    Horizontal finger movement = package swipe
-
-    SwipeContainer.js direction detect karega.
+    Horizontal movement:
+    package swipe
   */
   touch-action: pan-y;
-
-  /*
-    Horizontal overscroll ko page tak propagate
-    nahi hone deta.
-  */
-  overscroll-behavior-x: contain;
-
-  /*
-    Programmatic scrolling / soft settling smooth.
-  */
-  scroll-behavior: smooth;
-
-  /*
-    Browser ko scrolling container ke baare mein hint.
-  */
-  will-change: scroll-position;
 }
 
 
 /* =========================================================
-   HIDE SCROLLBAR
+   HIDE SWIPE SCROLLBAR
    ========================================================= */
 
 .swipe-container::-webkit-scrollbar {
@@ -307,11 +315,37 @@ p {
 
 
 /* =========================================================
-   MOUSE DRAGGING
+   MOUSE DRAG
    ========================================================= */
 
 .swipe-container.dragging {
   cursor: grabbing;
+
+  scroll-behavior: auto;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   SWIPE CARD WIDTH - DESKTOP
+   ========================================================= */
+
+.swipe-container > * {
+  flex: 0 0 320px;
+
+  width: 320px;
+
+  min-width: 320px;
+
+  box-sizing: border-box;
+
+  scroll-snap-align: center;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 
@@ -320,18 +354,109 @@ p {
    ========================================================= */
 
 .swipe-container img {
-  pointer-events: none;
   user-select: none;
+
   -webkit-user-drag: none;
 }
 
 
 /* =========================================================
-   DESKTOP CARD WIDTH
+   PACKAGE / SWIPE CARD HOVER
    ========================================================= */
 
-.swipe-container > * {
+.swipe-container > *:hover {
+  transform: translateY(-8px);
+}
+
+
+/* =========================================================
+   PACKAGE IMAGE ANIMATION
+   ========================================================= */
+
+.swipe-container > * img {
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+.swipe-container > *:hover img {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   PACKAGE GRID
+   Used on Home page
+   ========================================================= */
+
+.package-grid {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  gap: 30px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 10px 20px 35px;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  scroll-behavior: smooth;
+
+  scroll-snap-type: x mandatory;
+
+  overscroll-behavior-x: contain;
+
+  touch-action: pan-x;
+
+  cursor: grab;
+
+  user-select: none;
+
+  box-sizing: border-box;
+}
+
+
+/* Hide package scrollbar */
+
+.package-grid::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   PACKAGE GRID DRAGGING
+   ========================================================= */
+
+.package-grid.dragging {
+  cursor: grabbing;
+
+  scroll-behavior: auto;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   HOME PACKAGE CARD
+   ========================================================= */
+
+.package-grid .package-card {
   flex: 0 0 320px;
+
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+
+  scroll-snap-align: center;
+
+  box-sizing: border-box;
 }
 
 
@@ -344,6 +469,9 @@ p {
   .section {
     padding: 75px 6%;
   }
+
+
+  /* Page Header */
 
   .page-header {
     min-height: 390px;
@@ -358,7 +486,7 @@ p {
   }
 
 
-  /* Tablet swipe */
+  /* Swipe Container */
 
   .swipe-container {
     gap: 20px;
@@ -373,6 +501,36 @@ p {
 
   .swipe-container > * {
     flex: 0 0 300px;
+
+    width: 300px;
+    min-width: 300px;
+  }
+
+
+  /* Home Package Grid */
+
+  .package-grid {
+    gap: 20px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    touch-action: pan-x;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .package-grid .package-card {
+    flex: 0 0 75%;
+
+    width: 75%;
+    min-width: 75%;
+    max-width: 75%;
+
+    scroll-snap-align: center;
   }
 }
 
@@ -407,6 +565,7 @@ p {
     background-position: center;
   }
 
+
   .page-header::before {
     background:
       linear-gradient(
@@ -416,15 +575,18 @@ p {
       );
   }
 
+
   .page-header .section-subtitle {
     font-size: 10px;
     letter-spacing: 2.5px;
   }
 
+
   .page-header h1 {
     font-size: 40px;
     line-height: 1.15;
   }
+
 
   .page-header p:not(.section-subtitle) {
     max-width: 520px;
@@ -434,12 +596,11 @@ p {
   }
 
 
-  /* =========================================================
-     MOBILE SWIPE
-     ========================================================= */
+  /* =======================================================
+     MOBILE SWIPE CONTAINER
+     ======================================================= */
 
   .swipe-container {
-
     display: flex;
 
     width: 100%;
@@ -458,20 +619,14 @@ p {
     -webkit-overflow-scrolling: touch;
 
     /*
-      UP / DOWN
-      = Page scroll
+      Vertical:
+      page scroll
 
-      LEFT / RIGHT
-      = Package swipe
+      Horizontal:
+      card swipe
     */
     touch-action: pan-y;
 
-    /*
-      SOFT SNAP
-
-      Card nearest position par gently settle karega.
-      Swipe ko force nahi karega.
-    */
     scroll-snap-type: x proximity;
 
     scroll-behavior: smooth;
@@ -482,37 +637,72 @@ p {
   }
 
 
-  /* Hide mobile scrollbar */
-
   .swipe-container::-webkit-scrollbar {
     display: none;
   }
 
 
-  /* =========================================================
-     MOBILE CARD
-     ========================================================= */
+  /* Mobile Swipe Card */
 
   .swipe-container > * {
-
-    /*
-      Screen ka approx 85% card.
-      Next card thoda visible rahega.
-    */
     flex: 0 0 85%;
 
+    width: 85%;
     min-width: 85%;
 
-    /*
-      Soft snap position.
-    */
     scroll-snap-align: start;
 
-    /*
-      Ek swipe mein multiple cards jump
-      karne ki possibility ko normal rakhta hai.
-    */
     scroll-snap-stop: normal;
+  }
+
+
+  /* =======================================================
+     HOME PACKAGE GRID
+     ======================================================= */
+
+  .package-grid {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    gap: 15px;
+
+    padding: 10px 15px 25px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+
+    overscroll-behavior-x: contain;
+
+    touch-action: pan-x;
+
+    cursor: grab;
+  }
+
+
+  .package-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .package-grid .package-card {
+    flex: 0 0 85%;
+
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+
+    scroll-snap-align: center;
   }
 }
 
@@ -527,11 +717,15 @@ p {
     padding: 55px 15px;
   }
 
+
+  /* Page Header */
+
   .page-header {
     min-height: 310px;
 
     padding: 90px 18px 55px;
   }
+
 
   .page-header .section-subtitle {
     margin-bottom: 10px;
@@ -541,29 +735,28 @@ p {
     letter-spacing: 2px;
   }
 
+
   .page-header h1 {
     margin-bottom: 14px;
 
     font-size: 32px;
   }
 
+
   .page-header p:not(.section-subtitle) {
     font-size: 13px;
+
     line-height: 1.7;
   }
 
 
-  /* Small mobile swipe */
+  /* Small Mobile Swipe */
 
   .swipe-container {
-
     gap: 14px;
 
     padding: 5px 0 15px;
 
-    /*
-      Same soft snap.
-    */
     scroll-snap-type: x proximity;
 
     scroll-behavior: smooth;
@@ -571,35 +764,74 @@ p {
 
 
   .swipe-container > * {
-
-    /*
-      Thoda bada card on small screens.
-    */
     flex: 0 0 88%;
 
+    width: 88%;
     min-width: 88%;
+  }
+
+
+  /* Small Mobile Home Packages */
+
+  .package-grid {
+    gap: 14px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+
+    scroll-snap-type: x mandatory;
+  }
+
+
+  .package-grid .package-card {
+    flex: 0 0 88%;
+
+    width: 88%;
+    min-width: 88%;
+    max-width: 88%;
   }
 }
 
 
 /* =========================================================
-   REDUCED MOTION
+   EXTRA SMALL MOBILE
    ========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 360px) {
 
-  html {
-    scroll-behavior: auto;
+  .section {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
-  .swipe-container {
-    scroll-behavior: auto;
+
+  .page-header {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
+  .page-header h1 {
+    font-size: 29px;
+  }
+
+
+  .package-grid {
+    gap: 12px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  .package-grid .package-card {
+    flex: 0 0 90%;
+
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
   }
 }
-
-
-
-
 
 
 /* =========================================================
@@ -627,6 +859,7 @@ p {
 
 .scroll-animation.fade-up.show {
   opacity: 1;
+
   transform: translateY(0);
 }
 
@@ -641,6 +874,7 @@ p {
 
 .scroll-animation.fade-down.show {
   opacity: 1;
+
   transform: translateY(0);
 }
 
@@ -655,6 +889,7 @@ p {
 
 .scroll-animation.fade-left.show {
   opacity: 1;
+
   transform: translateX(0);
 }
 
@@ -669,6 +904,7 @@ p {
 
 .scroll-animation.fade-right.show {
   opacity: 1;
+
   transform: translateX(0);
 }
 
@@ -683,6 +919,7 @@ p {
 
 .scroll-animation.zoom.show {
   opacity: 1;
+
   transform: scale(1);
 }
 
@@ -701,93 +938,27 @@ p {
 
 
 /* =========================================================
-   PACKAGE CARD HOVER
-   ========================================================= */
-
-.swipe-container > * {
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.swipe-container > *:hover {
-  transform: translateY(-8px);
-}
-
-
-/* =========================================================
-   PACKAGE IMAGE ANIMATION
-   ========================================================= */
-
-.swipe-container img {
-  transition:
-    transform 0.6s ease,
-    filter 0.6s ease;
-}
-
-.swipe-container > *:hover img {
-  transform: scale(1.04);
-}
-
-
-/* =========================================================
-   BUTTON ANIMATION
-   ========================================================= */
-
-.main-button,
-.outline-button {
-  transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.main-button:hover,
-.outline-button:hover {
-  transform: translateY(-3px);
-}
-
-
-/* =========================================================
-   SWIPE SMOOTHNESS
-   ========================================================= */
-
-.swipe-container {
-  scroll-behavior: smooth;
-
-  -webkit-overflow-scrolling: touch;
-}
-
-
-/* =========================================================
-   MOBILE CARD ANIMATION
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-  .swipe-container > * {
-    transition:
-      transform 0.35s ease,
-      opacity 0.35s ease;
-  }
-}
-
-
-/* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
+  html {
+    scroll-behavior: auto;
+  }
+
+
   .scroll-animation {
     opacity: 1 !important;
+
     transform: none !important;
+
     transition: none !important;
   }
 
-  .swipe-container {
+
+  .swipe-container,
+  .package-grid {
     scroll-behavior: auto;
   }
 }
-

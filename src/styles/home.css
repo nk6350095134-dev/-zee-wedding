@@ -164,37 +164,83 @@
   margin: 0 auto;
 }
 
+
 /* =====================================================
-   WEDDING PACKAGE SWIPE
+   WEDDING PACKAGE SLIDER
+   SWIPE + SCROLL + MOUSE DRAG
    ===================================================== */
 
 .package-grid {
-  margin-top: 50px;
+  width: 100%;
+
+  max-width: 1450px;
+
+  margin: 50px auto 0;
 
   display: flex;
 
-  width: 100%;
+  flex-direction: row;
+
+  flex-wrap: nowrap;
 
   gap: 30px;
 
   text-align: left;
 
+  /* Horizontal scrolling */
   overflow-x: auto;
+
   overflow-y: hidden;
 
-  scrollbar-width: none;
+  /* Mobile finger swipe */
+  touch-action: pan-x;
 
+  /* Smooth touch scrolling */
   -webkit-overflow-scrolling: touch;
 
-  touch-action: pan-y;
+  /* Card snapping */
+  scroll-snap-type: x mandatory;
 
+  /* Smooth normal scrolling */
+  scroll-behavior: smooth;
+
+  /* Prevent overscroll */
   overscroll-behavior-x: contain;
 
-  scroll-behavior: smooth;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+
+  /* Mouse drag */
+  cursor: grab;
+
+  /* Prevent text selection */
+  user-select: none;
+
+  padding: 10px 20px 35px;
+
+  box-sizing: border-box;
 }
+
+
+/* =====================================================
+   HIDE PACKAGE SCROLLBAR
+   ===================================================== */
 
 .package-grid::-webkit-scrollbar {
   display: none;
+}
+
+
+/* =====================================================
+   PACKAGE MOUSE DRAGGING
+   ===================================================== */
+
+.package-grid.dragging {
+  cursor: grabbing;
+
+  scroll-behavior: auto;
+
+  user-select: none;
 }
 
 
@@ -204,8 +250,24 @@
 
 .package-grid .package-card {
   flex: 0 0 320px;
+
+  width: 320px;
+
   min-width: 320px;
+
+  max-width: 320px;
+
+  scroll-snap-align: center;
+
+  scroll-snap-stop: normal;
+
+  box-sizing: border-box;
 }
+
+
+/* =====================================================
+   PACKAGE CARD DESIGN
+   ===================================================== */
 
 .package-card {
   position: relative;
@@ -218,14 +280,27 @@
 
   border-radius: 10px;
 
-  transition: 0.3s ease;
+  box-sizing: border-box;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .package-card:hover {
   transform: translateY(-7px);
 
   border-color: #c9a46c;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
 }
+
+
+/* =====================================================
+   PACKAGE IMAGE
+   ===================================================== */
 
 .package-image {
   width: 100%;
@@ -233,21 +308,30 @@
   height: 270px;
 
   overflow: hidden;
+
+  background: #222222;
 }
 
 .package-image img {
+  display: block;
+
   width: 100%;
 
   height: 100%;
 
   object-fit: cover;
 
-  transition: 0.5s ease;
+  transition: transform 0.5s ease;
 }
 
 .package-card:hover .package-image img {
   transform: scale(1.05);
 }
+
+
+/* =====================================================
+   PACKAGE CONTENT
+   ===================================================== */
 
 .package-content {
   padding: 28px;
@@ -256,7 +340,7 @@
 .package-content h3 {
   font-size: 27px;
 
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 }
 
 .package-price {
@@ -299,6 +383,11 @@
   color: #c9a46c;
 }
 
+
+/* =====================================================
+   POPULAR PACKAGE
+   ===================================================== */
+
 .popular-package {
   border-color: #c9a46c;
 }
@@ -323,6 +412,11 @@
   z-index: 2;
 }
 
+
+/* =====================================================
+   PACKAGE BUTTON
+   ===================================================== */
+
 .package-button {
   width: 100%;
 
@@ -336,15 +430,22 @@
 
   border: 1px solid #c9a46c;
 
+  border-radius: 6px;
+
   cursor: pointer;
 
-  transition: 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .package-button:hover {
   background: transparent;
 
   color: #c9a46c;
+
+  transform: translateY(-2px);
 }
 
 
@@ -396,7 +497,9 @@
   position: absolute;
 
   left: 0;
+
   right: 0;
+
   bottom: 0;
 
   padding: 35px 20px 20px;
@@ -516,10 +619,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .package-grid {
-    grid-template-columns: 1fr;
-  }
-
   .gallery {
     grid-template-columns: 1fr;
   }
@@ -531,7 +630,39 @@
 
 
 /* =====================================================
-   MOBILE SWIPE
+   TABLET PACKAGE SWIPE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .package-grid {
+    gap: 20px;
+
+    padding-left: 20px;
+
+    padding-right: 20px;
+
+    touch-action: pan-x;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .package-grid .package-card {
+    flex: 0 0 75%;
+
+    width: 75%;
+
+    min-width: 75%;
+
+    max-width: 75%;
+
+    scroll-snap-align: center;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
    ===================================================== */
 
 @media (max-width: 600px) {
@@ -555,7 +686,9 @@
   }
 
 
-  /* SERVICES SWIPE */
+  /* =================================================
+     SERVICES SWIPE
+     ================================================= */
 
   .service-grid {
     display: flex;
@@ -571,6 +704,10 @@
     -webkit-overflow-scrolling: touch;
 
     scrollbar-width: none;
+
+    touch-action: pan-x;
+
+    overscroll-behavior-x: contain;
   }
 
   .service-grid::-webkit-scrollbar {
@@ -584,36 +721,54 @@
   }
 
 
-  /* PACKAGES SWIPE */
+  /* =================================================
+     PACKAGES SWIPE
+     ================================================= */
 
   .package-grid {
-    display: flex;
+    gap: 15px;
+
+    padding: 10px 15px 25px;
 
     overflow-x: auto;
 
-    gap: 16px;
-
-    padding: 10px 5px 25px;
+    overflow-y: hidden;
 
     scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
 
     -webkit-overflow-scrolling: touch;
 
     scrollbar-width: none;
+
+    touch-action: pan-x;
+
+    overscroll-behavior-x: contain;
+
+    cursor: grab;
   }
 
   .package-grid::-webkit-scrollbar {
     display: none;
   }
 
-  .package-card {
-    flex: 0 0 88%;
+  .package-grid .package-card {
+    flex: 0 0 85%;
+
+    width: 85%;
+
+    min-width: 85%;
+
+    max-width: 85%;
 
     scroll-snap-align: center;
   }
 
 
-  /* PORTFOLIO SWIPE */
+  /* =================================================
+     PORTFOLIO SWIPE
+     ================================================= */
 
   .gallery {
     display: flex;
@@ -629,6 +784,10 @@
     -webkit-overflow-scrolling: touch;
 
     scrollbar-width: none;
+
+    touch-action: pan-x;
+
+    overscroll-behavior-x: contain;
   }
 
   .gallery::-webkit-scrollbar {
@@ -644,7 +803,9 @@
   }
 
 
-  /* CUSTOMER SWIPE */
+  /* =================================================
+     CUSTOMER SWIPE
+     ================================================= */
 
   .testimonial-grid {
     display: flex;
@@ -660,6 +821,10 @@
     -webkit-overflow-scrolling: touch;
 
     scrollbar-width: none;
+
+    touch-action: pan-x;
+
+    overscroll-behavior-x: contain;
   }
 
   .testimonial-grid::-webkit-scrollbar {
@@ -673,107 +838,18 @@
   }
 }
 
-/* =====================================
-   MOBILE / TABLET SWIPE SECTIONS
-===================================== */
 
-@media (max-width: 900px) {
-
-  /* SERVICES */
-  .services-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 10px 5px 25px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .services-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .services-grid .service-card {
-    min-width: 280px;
-    flex: 0 0 280px;
-    scroll-snap-align: start;
-  }
-
-
-  /* PACKAGES */
-  .packages-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 10px 5px 30px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .packages-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .packages-grid .package-card {
-    min-width: 300px;
-    max-width: 300px;
-    flex: 0 0 300px;
-    scroll-snap-align: start;
-  }
-
-
-  /* PORTFOLIO */
-  .gallery {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 10px 5px 25px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .gallery::-webkit-scrollbar {
-    display: none;
-  }
-
-  .gallery .gallery-item {
-    min-width: 300px;
-    flex: 0 0 300px;
-    scroll-snap-align: start;
-  }
-
-
-  /* HAPPY CUSTOMERS */
-  .testimonials-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 10px 5px 25px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .testimonials-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .testimonials-grid .testimonial-card {
-    min-width: 290px;
-    flex: 0 0 290px;
-    scroll-snap-align: start;
-  }
-}
-
-
-/* =========================================================
+/* =====================================================
    HOME PRE-WEDDING SECTION
-   ========================================================= */
+   ===================================================== */
 
 .home-prewedding {
   min-height: 600px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 70px;
@@ -781,15 +857,16 @@
   padding: 100px 7%;
 
   background: #111111;
+
   color: #ffffff;
 
   box-sizing: border-box;
 }
 
 
-/* =========================================================
+/* =====================================================
    LEFT CONTENT
-   ========================================================= */
+   ===================================================== */
 
 .home-prewedding-content {
   max-width: 560px;
@@ -799,6 +876,7 @@
   margin: 0;
 
   font-size: 55px;
+
   line-height: 1.1;
 
   font-weight: 500;
@@ -806,6 +884,7 @@
 
 .home-prewedding-content h2 span {
   color: #c9a96e;
+
   font-style: italic;
 }
 
@@ -817,16 +896,18 @@
   color: #aaaaaa;
 
   font-size: 15px;
+
   line-height: 1.8;
 }
 
 
-/* =========================================================
+/* =====================================================
    PRE-WEDDING CARDS
-   ========================================================= */
+   ===================================================== */
 
 .home-prewedding-cards {
   width: 100%;
+
   max-width: 560px;
 
   display: grid;
@@ -866,7 +947,9 @@
 }
 
 
-/* NUMBER */
+/* =====================================================
+   PRE-WEDDING NUMBER
+   ===================================================== */
 
 .prewedding-number {
   display: block;
@@ -881,7 +964,9 @@
 }
 
 
-/* CARD TITLE */
+/* =====================================================
+   PRE-WEDDING CARD TITLE
+   ===================================================== */
 
 .home-prewedding-card h3 {
   margin: 0 0 10px;
@@ -892,7 +977,9 @@
 }
 
 
-/* CARD TEXT */
+/* =====================================================
+   PRE-WEDDING CARD TEXT
+   ===================================================== */
 
 .home-prewedding-card p {
   margin: 0;
@@ -905,9 +992,9 @@
 }
 
 
-/* =========================================================
-   TABLET
-   ========================================================= */
+/* =====================================================
+   PRE-WEDDING TABLET
+   ===================================================== */
 
 @media (max-width: 1024px) {
 
@@ -935,9 +1022,9 @@
 }
 
 
-/* =========================================================
-   MOBILE - SWIPEABLE
-   ========================================================= */
+/* =====================================================
+   PRE-WEDDING MOBILE SWIPE
+   ===================================================== */
 
 @media (max-width: 600px) {
 
@@ -957,7 +1044,6 @@
   /* Horizontal Swipe */
 
   .home-prewedding-cards {
-
     display: flex;
 
     width: 100%;
@@ -973,16 +1059,18 @@
     -webkit-overflow-scrolling: touch;
 
     scrollbar-width: none;
+
+    touch-action: pan-x;
+
+    overscroll-behavior-x: contain;
   }
 
   .home-prewedding-cards::-webkit-scrollbar {
     display: none;
   }
 
-
   .home-prewedding-card,
   .home-prewedding-card:last-child {
-
     min-width: 280px;
 
     max-width: 280px;
@@ -993,7 +1081,7 @@
 
     grid-column: unset;
 
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 
   .home-prewedding-card:hover {
@@ -1002,9 +1090,9 @@
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
+/* =====================================================
+   PRE-WEDDING SMALL MOBILE
+   ===================================================== */
 
 @media (max-width: 400px) {
 
@@ -1018,7 +1106,6 @@
 
   .home-prewedding-card,
   .home-prewedding-card:last-child {
-
     min-width: 260px;
 
     max-width: 260px;
@@ -1028,107 +1115,77 @@
 }
 
 
-/* Pre-Wedding Home Image */
+/* =====================================================
+   PRE-WEDDING HOME IMAGE
+   ===================================================== */
 
 .home-pre-wedding-image {
   width: 100%;
+
   height: 500px;
+
   overflow: hidden;
+
   border-radius: 12px;
 }
 
 .home-pre-wedding-image img {
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
+
   object-position: center;
+
   display: block;
+
   transition: transform 0.5s ease;
 }
 
-/* Image Hover Effect */
+
+/* =====================================================
+   IMAGE HOVER EFFECT
+   ===================================================== */
 
 .home-pre-wedding-image:hover img {
   transform: scale(1.05);
 }
 
 
-/* Tablet */
+/* =====================================================
+   PRE-WEDDING IMAGE TABLET
+   ===================================================== */
 
 @media (max-width: 900px) {
+
   .home-pre-wedding-image {
     height: 430px;
   }
 }
 
 
-/* Mobile */
+/* =====================================================
+   PRE-WEDDING IMAGE MOBILE
+   ===================================================== */
 
 @media (max-width: 600px) {
+
   .home-pre-wedding-image {
     height: 350px;
+
     border-radius: 8px;
   }
 }
 
 
-/* Small Mobile */
+/* =====================================================
+   PRE-WEDDING IMAGE SMALL MOBILE
+   ===================================================== */
 
 @media (max-width: 400px) {
+
   .home-pre-wedding-image {
     height: 300px;
-  }
-}
-
-@media (max-width: 1024px) {
-
-  .package-grid {
-    gap: 20px;
-  }
-
-  .package-grid .package-card {
-    flex: 0 0 300px;
-    min-width: 300px;
-  }
-}
-
-
-
-@media (max-width: 768px) {
-
-  .package-grid {
-    gap: 16px;
-
-    padding: 5px 0 15px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    touch-action: pan-y;
-
-    scroll-snap-type: x proximity;
-
-    scroll-behavior: smooth;
-  }
-
-  .package-grid .package-card {
-    flex: 0 0 85%;
-    min-width: 85%;
-
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
-  }
-}
-
-
-@media (max-width: 480px) {
-
-  .package-grid {
-    gap: 14px;
-  }
-
-  .package-grid .package-card {
-    flex: 0 0 88%;
-    min-width: 88%;
   }
 }
