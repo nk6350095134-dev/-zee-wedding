@@ -83,7 +83,7 @@
   -webkit-overflow-scrolling: touch;
 
   /* Horizontal finger swipe */
-  touch-action: pan-x;
+  touch-action: pan-y;
 
   /* Snap cards */
   scroll-snap-type: x mandatory;
@@ -445,7 +445,7 @@
     padding-right: 20px;
 
     /* Keep horizontal swipe */
-    touch-action: pan-x;
+    touch-action: auto;
 
     scroll-snap-type: x mandatory;
   }
@@ -486,7 +486,7 @@
     padding-left: 15px;
     padding-right: 15px;
 
-    touch-action: pan-x;
+    touch-action: auto;
   }
 
   .package-grid .package-card {

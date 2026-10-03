@@ -4,6 +4,7 @@ const preWeddingPackages = [
     price: "₹7,999",
     image: "/images/p1.jpg",
     features: [
+      "3 Reels Included",
       "5 Hours of Shoot Time per Day",
       "iPhone 17 Pro Max Shoot",
       "Couple-Focused Content",
@@ -23,6 +24,7 @@ const preWeddingPackages = [
     price: "₹11,999",
      image: "/images/p2.jpg",
     features: [
+      "5 Reels Included",
       "5 Hours of Shoot Time per Day",
       "iPhone 17 Pro Max Shoot",
       "Couple Transitions",
@@ -42,6 +44,7 @@ const preWeddingPackages = [
     price: "₹15,999",
      image: "/images/p3.webp",
     features: [
+      "7 Reels + 2 creators",
       "5 Hours of Shoot Time per Day",
       "iPhone 17 Pro Max Shoot",
       "Trending Video Concepts",
@@ -62,6 +65,7 @@ const preWeddingPackages = [
      image: "/images/p4.webp",
     popular: true,
     features: [
+      "10 Reels + Bloopers",
       "5 Hours of Shoot Time per Day",
       "iPhone 17 Pro Max Shoot",
       "Multiple Content Concepts",

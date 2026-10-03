@@ -260,12 +260,8 @@ p {
   line-height: 1.8;
 }
 
-
 /* =========================================================
    SWIPE CONTAINER
-   Used by:
-   - Wedding Packages
-   - Pre-Wedding Packages
    ========================================================= */
 
 .swipe-container {
@@ -286,27 +282,21 @@ p {
 
   scroll-behavior: smooth;
 
-  overscroll-behavior-x: contain;
-
   user-select: none;
 
   cursor: grab;
 
-  will-change: scroll-position;
-
   /*
-    Vertical movement:
-    normal website scroll
+    IMPORTANT
 
-    Horizontal movement:
-    package swipe
+    Mobile vertical page scrolling remains native.
   */
-  touch-action: pan-y;
+  touch-action: auto;
 }
 
 
 /* =========================================================
-   HIDE SWIPE SCROLLBAR
+   HIDE SCROLLBAR
    ========================================================= */
 
 .swipe-container::-webkit-scrollbar {
@@ -315,20 +305,18 @@ p {
 
 
 /* =========================================================
-   MOUSE DRAG
+   DESKTOP DRAG
    ========================================================= */
 
 .swipe-container.dragging {
   cursor: grabbing;
 
   scroll-behavior: auto;
-
-  user-select: none;
 }
 
 
 /* =========================================================
-   SWIPE CARD WIDTH - DESKTOP
+   CARDS
    ========================================================= */
 
 .swipe-container > * {
@@ -340,17 +328,12 @@ p {
 
   box-sizing: border-box;
 
-  scroll-snap-align: center;
-
-  transition:
-    transform 0.35s ease,
-    opacity 0.35s ease,
-    box-shadow 0.35s ease;
+  scroll-snap-align: start;
 }
 
 
 /* =========================================================
-   PREVENT IMAGE DRAG
+   IMAGES
    ========================================================= */
 
 .swipe-container img {
@@ -361,28 +344,79 @@ p {
 
 
 /* =========================================================
-   PACKAGE / SWIPE CARD HOVER
+   TABLET
    ========================================================= */
 
-.swipe-container > *:hover {
-  transform: translateY(-8px);
+@media (max-width: 1024px) {
+
+  .swipe-container {
+    gap: 20px;
+
+    overflow-x: auto;
+
+    touch-action: auto;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 75%;
+
+    width: 75%;
+
+    min-width: 75%;
+
+    scroll-snap-align: start;
+  }
 }
 
 
 /* =========================================================
-   PACKAGE IMAGE ANIMATION
+   MOBILE
    ========================================================= */
 
-.swipe-container > * img {
-  transition:
-    transform 0.6s ease,
-    filter 0.6s ease;
+@media (max-width: 768px) {
+
+  .swipe-container {
+    gap: 15px;
+
+    overflow-x: auto;
+
+    touch-action: auto;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 85%;
+
+    width: 85%;
+
+    min-width: 85%;
+  }
 }
 
-.swipe-container > *:hover img {
-  transform: scale(1.04);
-}
 
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .swipe-container {
+    gap: 15px;
+
+    touch-action: auto;
+  }
+
+  .swipe-container > * {
+    flex: 0 0 88%;
+
+    width: 88%;
+
+    min-width: 88%;
+  }
+}
 
 /* =========================================================
    PACKAGE GRID
@@ -413,7 +447,7 @@ p {
 
   overscroll-behavior-x: contain;
 
-  touch-action: pan-x;
+  touch-action: auto;
 
   cursor: grab;
 
@@ -494,7 +528,7 @@ p {
     overflow-x: auto;
     overflow-y: hidden;
 
-    touch-action: pan-y;
+    touch-action: auto;
 
     scroll-behavior: smooth;
   }
@@ -518,7 +552,7 @@ p {
     overflow-x: auto;
     overflow-y: hidden;
 
-    touch-action: pan-x;
+    touch-action: auto;
 
     scroll-snap-type: x mandatory;
   }
@@ -625,7 +659,7 @@ p {
       Horizontal:
       card swipe
     */
-    touch-action: pan-y;
+    touch-action: auto;
 
     scroll-snap-type: x proximity;
 
@@ -684,7 +718,7 @@ p {
 
     overscroll-behavior-x: contain;
 
-    touch-action: pan-x;
+    touch-action: auto;
 
     cursor: grab;
   }

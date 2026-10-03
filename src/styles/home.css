@@ -193,7 +193,7 @@
   overflow-y: hidden;
 
   /* Mobile finger swipe */
-  touch-action: pan-x;
+  touch-action: auto;
 
   /* Smooth touch scrolling */
   -webkit-overflow-scrolling: touch;
@@ -642,7 +642,7 @@
 
     padding-right: 20px;
 
-    touch-action: pan-x;
+    touch-action: auto;
 
     scroll-snap-type: x mandatory;
   }
@@ -705,7 +705,7 @@
 
     scrollbar-width: none;
 
-    touch-action: pan-x;
+    touch-action: auto;
 
     overscroll-behavior-x: contain;
   }
@@ -732,7 +732,7 @@
 
     overflow-x: auto;
 
-    overflow-y: hidden;
+    overflow-y: visible;
 
     scroll-snap-type: x mandatory;
 
@@ -742,7 +742,7 @@
 
     scrollbar-width: none;
 
-    touch-action: pan-x;
+    touch-action: auto;
 
     overscroll-behavior-x: contain;
 
@@ -785,7 +785,7 @@
 
     scrollbar-width: none;
 
-    touch-action: pan-x;
+    touch-action: auto;
 
     overscroll-behavior-x: contain;
   }
@@ -822,7 +822,7 @@
 
     scrollbar-width: none;
 
-    touch-action: pan-x;
+    touch-action: auto;
 
     overscroll-behavior-x: contain;
   }
@@ -1187,5 +1187,213 @@
 
   .home-pre-wedding-image {
     height: 300px;
+  }
+}
+
+/* =========================================================
+   FINAL SWIPE FIX
+   ========================================================= */
+
+/* Main package slider */
+.package-grid,
+.service-grid,
+.gallery,
+.testimonial-grid,
+.home-prewedding-cards {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+
+  -webkit-overflow-scrolling: touch;
+
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+
+  /* VERY IMPORTANT */
+  touch-action: auto !important;
+
+  overscroll-behavior-x: contain;
+}
+
+/* Hide scrollbar */
+.package-grid::-webkit-scrollbar,
+.service-grid::-webkit-scrollbar,
+.gallery::-webkit-scrollbar,
+.testimonial-grid::-webkit-scrollbar,
+.home-prewedding-cards::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   PACKAGE CARDS
+   ========================================================= */
+
+.package-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 20px;
+}
+
+.package-grid .package-card {
+  flex: 0 0 320px !important;
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+
+  scroll-snap-align: center;
+}
+
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.service-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+.service-card {
+  flex: 0 0 82% !important;
+  min-width: 82% !important;
+
+  scroll-snap-align: center;
+}
+
+
+/* =========================================================
+   PORTFOLIO
+   ========================================================= */
+
+.gallery {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+.gallery-item {
+  flex: 0 0 85% !important;
+  min-width: 85% !important;
+
+  scroll-snap-align: center;
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+.testimonial-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+.testimonial-card {
+  flex: 0 0 85% !important;
+  min-width: 85% !important;
+
+  scroll-snap-align: center;
+}
+
+
+/* =========================================================
+   HOME PRE-WEDDING
+   ========================================================= */
+
+.home-prewedding-cards {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+.home-prewedding-card {
+  flex: 0 0 280px !important;
+  min-width: 280px !important;
+
+  scroll-snap-align: center;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .package-grid {
+    gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .package-grid .package-card {
+    flex: 0 0 75% !important;
+    width: 75% !important;
+    min-width: 75% !important;
+    max-width: 75% !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .package-grid {
+    gap: 15px;
+    padding: 10px 15px 25px;
+  }
+
+  .package-grid .package-card {
+    flex: 0 0 85% !important;
+    width: 85% !important;
+    min-width: 85% !important;
+    max-width: 85% !important;
+  }
+
+
+  .service-grid {
+    gap: 15px;
+    padding: 10px 5px 25px;
+  }
+
+  .service-card {
+    flex: 0 0 82% !important;
+    min-width: 82% !important;
+  }
+
+
+  .gallery {
+    gap: 15px;
+    padding: 10px 5px 25px;
+  }
+
+  .gallery-item {
+    flex: 0 0 85% !important;
+    min-width: 85% !important;
+  }
+
+
+  .testimonial-grid {
+    gap: 15px;
+    padding: 10px 5px 25px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 85% !important;
+    min-width: 85% !important;
+  }
+
+
+  .home-prewedding-cards {
+    gap: 15px;
+    padding-bottom: 15px;
+  }
+
+  .home-prewedding-card {
+    flex: 0 0 85vw !important;
+    min-width: 85vw !important;
+    max-width: 85vw !important;
   }
 }
