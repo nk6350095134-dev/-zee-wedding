@@ -449,79 +449,125 @@
 }
 
 
+
+
 /* =====================================================
-   PORTFOLIO
+   OUR WORK / PORTFOLIO SWIPE
    ===================================================== */
 
-.portfolio-section {
-  background: #151515;
-
-  text-align: center;
-}
-
 .gallery {
-  margin-top: 40px;
+  display: flex;
+  flex-wrap: nowrap;
 
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 25px;
-}
-
-.gallery-item {
-  position: relative;
-
-  height: 450px;
-
-  overflow: hidden;
-
-  border-radius: 8px;
-}
-
-.gallery-item img {
   width: 100%;
 
-  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 
-  object-fit: cover;
+  gap: 18px;
 
-  transition: 0.5s ease;
+  padding: 10px 5px 30px;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  scroll-snap-type: x mandatory;
+
+  overscroll-behavior-x: contain;
+
+  cursor: grab;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.07);
+.gallery::-webkit-scrollbar {
+  display: none;
 }
 
-.gallery-overlay {
-  position: absolute;
 
-  left: 0;
+/* Each work card */
+.gallery-item {
+  flex: 0 0 320px;
 
-  right: 0;
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
 
-  bottom: 0;
+  height: 420px;
 
-  padding: 35px 20px 20px;
+  scroll-snap-align: center;
 
-  background: linear-gradient(
-    transparent,
-    rgba(0, 0, 0, 0.9)
-  );
-
-  text-align: left;
+  flex-shrink: 0;
 }
 
-.gallery-overlay h3 {
-  font-size: 24px;
 
-  margin-bottom: 5px;
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .gallery {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+
+    gap: 15px;
+
+    padding: 10px 15px 30px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+
+    overscroll-behavior-x: contain;
+
+    touch-action: auto;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-item {
+    flex: 0 0 85vw;
+
+    width: 85vw;
+    min-width: 85vw;
+    max-width: 85vw;
+
+    height: 420px;
+
+    scroll-snap-align: center;
+  }
 }
 
-.gallery-overlay p {
-  font-size: 13px;
-}
 
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+  .gallery {
+    gap: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .gallery-item {
+    flex: 0 0 88vw;
+
+    width: 88vw;
+    min-width: 88vw;
+    max-width: 88vw;
+
+    height: 400px;
+  }
+}
 
 /* =====================================================
    HAPPY CUSTOMERS
